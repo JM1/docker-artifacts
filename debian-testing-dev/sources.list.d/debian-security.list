@@ -1,0 +1,58 @@
+# Security updates #
+##############################################################################
+# Nach Status
+
+# Stable
+# deb http://security.debian.org stable/updates main contrib non-free
+
+# Stable Sources
+# deb-src http://security.debian.org stable/updates main contrib non-free
+
+# Testing
+deb http://security.debian.org testing/updates main contrib non-free
+
+# Testing Sources
+deb-src http://security.debian.org testing/updates main contrib non-free
+
+##############################################################################
+# Nach Release
+
+# Etch
+# deb http://security.debian.org etch/updates main contrib non-free
+
+# Lenny
+# deb http://security.debian.org lenny/updates main contrib non-free
+
+# Lenny Sources
+# deb-src http://security.debian.org lenny/updates main contrib non-free
+
+# Squeeze
+# deb http://security.debian.org squeeze/updates main contrib non-free
+
+# Squeeze Sources
+# deb-src http://security.debian.org squeeze/updates main contrib non-free
+
+# Wheezy
+# deb http://security.debian.org wheezy/updates main contrib non-free
+
+# Wheezy Sources
+# deb-src http://security.debian.org wheezy/updates main contrib non-free
+
+# Jessie
+# deb http://security.debian.org jessie/updates main contrib non-free
+
+# Jessie Sources
+# deb-src http://security.debian.org jessie/updates main contrib non-free
+
+# Stretch
+# deb http://security.debian.org stretch/updates main contrib non-free
+
+# Stretch Sources
+# deb-src http://security.debian.org stretch/updates main contrib non-free
+
+# Buster
+# deb http://security.debian.org buster/updates main contrib non-free
+
+# Buster Sources
+# deb-src http://security.debian.org buster/updates main contrib non-free
+

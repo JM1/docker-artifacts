@@ -1,0 +1,147 @@
+# Normale Debian Mirrors #
+##############################################################################
+# Nach Status
+
+# Stable
+# deb http://ftp.de.debian.org/pub/debian stable main contrib non-free
+# deb http://ftp2.de.debian.org/pub/debian stable main contrib non-free
+# deb http://ftp.uk.debian.org/debian/ stable main contrib non-free
+# deb http://debian.uni-essen.de/debian/ stable main contrib non-free
+#
+# deb http://ftp.de.debian.org/debian stable contrib non-free main
+# deb http://ftp.de.debian.org/debian stable-updates contrib non-free main
+# deb http://ftp.de.debian.org/debian stable-proposed-updates contrib non-free main
+
+# Stable Sources
+# deb-src http://ftp.de.debian.org/pub/debian stable main contrib non-free
+# deb-src http://ftp2.de.debian.org/pub/debian stable main contrib non-free
+# deb-src http://ftp.uk.debian.org/debian/ stable main contrib non-free
+# deb-src http://debian.uni-essen.de/debian/ stable main contrib non-free
+#
+# deb-src http://ftp.de.debian.org/debian stable main contrib non-free
+# deb-src http://ftp.de.debian.org/debian stable-updates contrib non-free main
+# deb-src http://ftp.de.debian.org/debian stable-proposed-updates contrib non-free main
+
+# Testing
+# deb http://ftp.de.debian.org/pub/debian testing main contrib non-free
+# deb http://ftp2.de.debian.org/pub/debian testing main contrib non-free
+# deb http://ftp.uk.debian.org/debian/ testing main contrib non-free
+# deb http://debian.uni-essen.de/debian/ testing main contrib non-free
+#
+deb http://ftp.de.debian.org/debian testing contrib non-free main
+deb http://ftp.de.debian.org/debian testing-updates contrib non-free main
+deb http://ftp.de.debian.org/debian testing-proposed-updates contrib non-free main
+
+# Testing Sources
+# deb-src http://ftp.de.debian.org/pub/debian testing main contrib non-free
+# deb-src http://ftp2.de.debian.org/pub/debian testing main contrib non-free
+# deb-src http://ftp.uk.debian.org/debian/ testing main contrib non-free
+# deb-src http://debian.uni-essen.de/debian/ testing main contrib non-free
+#
+deb-src http://ftp.de.debian.org/debian testing main contrib non-free
+deb-src http://ftp.de.debian.org/debian testing-updates contrib non-free main
+deb-src http://ftp.de.debian.org/debian testing-proposed-updates contrib non-free main
+
+# Unstable
+deb http://ftp.de.debian.org/pub/debian unstable main contrib non-free
+# deb http://ftp2.de.debian.org/pub/debian unstable main contrib non-free
+# deb http://ftp.uk.debian.org/debian/ unstable main contrib non-free
+# deb http://debian.uni-essen.de/debian/ unstable main contrib non-free
+
+# Unstable Sources
+deb-src http://ftp.de.debian.org/pub/debian unstable main contrib non-free
+# deb-src http://ftp2.de.debian.org/pub/debian unstable main contrib non-free
+# deb-src http://ftp.uk.debian.org/debian/ unstable main contrib non-free
+# deb-src http://debian.uni-essen.de/debian/ unstable main contrib non-free
+
+# Experimental
+deb http://ftp.de.debian.org/pub/debian experimental main contrib non-free
+
+# Experimental Sources
+deb-src http://ftp.de.debian.org/pub/debian experimental main contrib non-free
+
+##############################################################################
+# Nach Release
+
+# Sarge
+# deb http://mirrors.kernel.org/debian sarge main non-free contrib
+
+# Sarge Sources
+# deb-src http://mirrors.kernel.org/debian sarge main non-free contrib
+
+# Etch
+# deb http://ftp.de.debian.org/pub/debian etch main contrib non-free
+
+# Etch Sources
+# deb-src http://ftp.de.debian.org/pub/debian etch main contrib non-free
+
+# Lenny
+# deb http://ftp.de.debian.org/debian lenny main contrib non-free
+# deb http://ftp.de.debian.org/debian lenny-proposed-updates contrib non-free main
+
+# Lenny Sources
+# deb-src http://ftp.de.debian.org/debian lenny main contrib non-free
+# deb-src http://ftp.de.debian.org/debian lenny-proposed-updates contrib non-free main
+
+# Squeeze
+# deb http://ftp.de.debian.org/pub/debian squeeze main contrib non-free
+# deb http://ftp.de.debian.org/pub/debian squeeze-updates main contrib non-free
+# deb http://ftp.de.debian.org/debian squeeze-proposed-updates contrib non-free main
+
+# Squeeze Sources
+# deb-src http://ftp.de.debian.org/pub/debian squeeze main contrib non-free
+# deb-src http://ftp.de.debian.org/pub/debian squeeze-updates main contrib non-free
+# deb-src http://ftp.de.debian.org/debian squeeze-proposed-updates contrib non-free main
+
+# Wheezy
+# deb http://ftp.de.debian.org/pub/debian wheezy main contrib non-free
+# deb http://ftp.de.debian.org/pub/debian wheezy-updates main contrib non-free
+# deb http://ftp.de.debian.org/pub/debian wheezy-proposed-updates main contrib non-free
+
+# Wheezy Sources
+# deb-src http://ftp.de.debian.org/pub/debian wheezy main contrib non-free
+# deb-src http://ftp.de.debian.org/pub/debian wheezy-updates main contrib non-free
+# deb-src http://ftp.de.debian.org/pub/debian wheezy-proposed-updates main contrib non-free
+
+# Jessie
+# deb http://ftp.de.debian.org/pub/debian jessie main contrib non-free
+# deb http://ftp.de.debian.org/pub/debian jessie-updates main contrib non-free
+# deb http://ftp.de.debian.org/pub/debian jessie-proposed-updates main contrib non-free
+
+# Jessie Sources
+# deb-src http://ftp.de.debian.org/pub/debian jessie main contrib non-free
+# deb-src http://ftp.de.debian.org/pub/debian jessie-updates main contrib non-free
+# deb-src http://ftp.de.debian.org/pub/debian jessie-proposed-updates main contrib non-free
+
+# Stretch
+# deb http://ftp.de.debian.org/pub/debian stretch main contrib non-free
+# deb http://ftp.de.debian.org/pub/debian stretch-updates main contrib non-free
+# deb http://ftp.de.debian.org/pub/debian stretch-proposed-updates main contrib non-free
+
+# Stretch Sources
+# deb-src http://ftp.de.debian.org/pub/debian stretch main contrib non-free
+# deb-src http://ftp.de.debian.org/pub/debian stretch-updates main contrib non-free
+# deb-src http://ftp.de.debian.org/pub/debian stretch-proposed-updates main contrib non-free
+
+# Buster
+# deb http://ftp.de.debian.org/pub/debian buster main contrib non-free
+# deb http://ftp.de.debian.org/pub/debian buster-updates main contrib non-free
+# deb http://ftp.de.debian.org/pub/debian buster-proposed-updates main contrib non-free
+
+# Buster Sources
+# deb-src http://ftp.de.debian.org/pub/debian buster main contrib non-free
+# deb-src http://ftp.de.debian.org/pub/debian buster-updates main contrib non-free
+# deb-src http://ftp.de.debian.org/pub/debian buster-proposed-updates main contrib non-free
+
+# Sid (Unstable)
+# deb http://ftp.de.debian.org/pub/debian sid main contrib non-free
+
+# Sid Sources
+# deb-src http://ftp.de.debian.org/pub/debian sid main contrib non-free
+
+# N.N. (Experimental)
+# deb http://ftp.de.debian.org/pub/debian experimental main contrib non-free
+
+# N.N. Sources
+# deb-src http://ftp.de.debian.org/pub/debian experimental main contrib non-free
+
