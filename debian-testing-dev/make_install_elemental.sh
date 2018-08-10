@@ -18,7 +18,6 @@ if [ "$(id -u)" -eq 0 ]; then
 fi
 
 PREFIX=/opt/Elemental/
-#PREFIX=/usr
 export DEBIAN_FRONTEND=noninteractive
 
 sudo apt-get install -y \
@@ -35,26 +34,11 @@ sudo apt-get install -y \
 
 sudo apt-get clean
 sudo update-ccache-symlinks
-# Workaround for https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=867705
-for cc in \
-  /usr/bin/clang \
-  /usr/bin/clang-[0-9\.]* \
-  /usr/bin/clang++ \
-  /usr/bin/clang++-[0-9\.]* \
-  /usr/bin/gcc \
-  /usr/bin/gcc-[0-9\.]* \
-  /usr/bin/g++ \
-  /usr/bin/g++-[0-9\.]* \
-  ; do
-    if [ -e "$cc" ]; then
-        lnk=$(basename "$cc");
-        if [ ! -e "/usr/lib/ccache/$lnk" ]; then
-            sudo ln -v -s /usr/bin/ccache "/usr/lib/ccache/$lnk";
-        fi;
-    fi;
-done
 
 eval $(dpkg-architecture)
+export PATH="/usr/lib/ccache:$PATH"
+export CC=gcc
+export CXX=g++
 
 cd /var/tmp/
 git clone --depth 1 https://github.com/JM1/Elemental.git # https://github.com/elemental/Elemental.git
@@ -123,14 +107,14 @@ cmake \
     -DEL_DISABLE_SCALAPACK=OFF \
     -DEL_DISABLE_PARMETIS=ON \
     -DEL_DISABLE_QUAD=ON \
-    -DCMAKE_C_COMPILER="ccache gcc" \
-    -DCMAKE_CXX_COMPILER="ccache g++" \
     -DMATH_LIBS="-lscalapack-openmpi -lflame -llapack -lopenblas" \
     -DCMAKE_INSTALL_PREFIX="$PREFIX" \
     -DCMAKE_INSTALL_LIBDIR="lib/${DEB_BUILD_MULTIARCH}" \
     -DINSTALL_CMAKE_DIR="lib/${DEB_BUILD_MULTIARCH}/cmake" \
     ..
 
+    #-DCMAKE_C_COMPILER="gcc" \
+    #-DCMAKE_CXX_COMPILER="g++" \
     #-DMATH_LIBS=" ... -L/opt/flame/lib/  ... " \
     #-DCMAKE_C_FLAGS=-isystem\ /opt/flame/include \
     #-DCMAKE_CXX_FLAGS=-isystem\ /opt/flame/include \

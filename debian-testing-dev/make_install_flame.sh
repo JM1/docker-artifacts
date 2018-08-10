@@ -27,15 +27,17 @@ sudo apt-get install -y \
 # coreutils is required for nproc
 
 sudo apt-get clean
+sudo update-ccache-symlinks
+
+eval $(dpkg-architecture)
+export PATH="/usr/lib/ccache:$PATH"
+export CC=gcc
 
 cd /var/tmp/
-
 # build/update-version-file.sh requires full clone for version detection
 git clone https://github.com/flame/libflame.git
 cd libflame/
 
-eval $(dpkg-architecture)
-export CC="ccache gcc"
 
 # NOTE: "make install" fails symlinking if PREFIX/inlude dir already exists. It is assumed that $PREFIX/include does not
 #       exist, because the build system will maintain this file as a symlink to the specific include associated with the
