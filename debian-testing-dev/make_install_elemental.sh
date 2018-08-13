@@ -41,7 +41,8 @@ export CC=gcc
 export CXX=g++
 
 cd /var/tmp/
-git clone --depth 1 https://github.com/JM1/Elemental.git # https://github.com/elemental/Elemental.git
+git clone --depth 1 https://github.com/elemental/Elemental.git
+
 cd Elemental/
 
 # If either MinSizeRel or RelWithDebInfo are specified, then Elemental falls back to Release mode.
