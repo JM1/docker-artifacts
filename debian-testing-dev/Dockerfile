@@ -34,6 +34,7 @@ RUN apt-get update && \
     nasm \
     valgrind \
     delta \
+    gcc-7 g++-7 \
     clang-6.0 lldb-6.0 libclang-6.0-dev \
     && \
   apt-get clean
