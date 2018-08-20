@@ -32,7 +32,7 @@ RUN apt-get update && \
     okteta okteta-dev breeze-icon-theme konsole-kpart ninja-build \
     breeze oxygen-icon-theme plasma-integration konsole kate dolphin systemsettings \
     kde-sc-dev-latest \
-    libomp-dev libnetcdf-c++4-dev libnetcdf-dev libvtk6-dev python-vtk6 paraview \
+    libomp-dev libnetcdf-c++4-dev libnetcdf-dev netcdf-bin libvtk6-dev python-vtk6 paraview \
     'libkf5([^k]+|(k([^f]|$)|kf([^a]|$)|kfa([^c]|$)|kfac([^e]|$)))+.*dev' \
     plasma-framework plasma-workspace-dev kdoctools-dev \
     plasma-workspace-wayland \
