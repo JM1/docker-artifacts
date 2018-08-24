@@ -6,6 +6,7 @@
     { "user": "jm1337", "name": "debian-testing-haskell-dev",  "tag": "latest", "path": "./debian-testing-haskell-dev" , "pull": "false" },
     { "user": "jm1337", "name": "debian-testing-kde-dev",      "tag": "latest", "path": "./debian-testing-kde-dev"     , "pull": "false" },
     { "user": "jm1337", "name": "debian-testing-kdevelop-dev", "tag": "latest", "path": "./debian-testing-kdevelop-dev", "pull": "false" },
+    { "user": "jm1337", "name": "debian-testing-cpp-dev",      "tag": "latest", "path": "./debian-testing-cpp-dev"     , "pull": "false" },
     { "user": "jm1337", "name": "debian-testing-lede-dev",     "tag": "latest", "path": "./debian-testing-lede-dev"    , "pull": "false" },
     { "user": "jm1337", "name": "debian-testing-prolog-dev",   "tag": "latest", "path": "./debian-testing-prolog-dev"  , "pull": "false" }
 ]

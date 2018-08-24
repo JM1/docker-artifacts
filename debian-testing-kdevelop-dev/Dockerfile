@@ -41,8 +41,4 @@ RUN mkdir /tmp/kdesrc && \
   rm -rf /tmp/kdesrc && \
   sudo rm /usr/local/bin/kdesrc-build
 
-RUN /usr/local/bin/make_install_flame.sh
-
-RUN /usr/local/bin/make_install_elemental.sh
-
 USER root

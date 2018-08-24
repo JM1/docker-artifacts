@@ -23,6 +23,7 @@ ADD llvm-snapshot.gpg /etc/apt/trusted.gpg.d/
 
 ADD make_install_flame.sh /usr/local/bin/
 ADD make_install_elemental.sh /usr/local/bin/
+ADD make_install_fmt.sh /usr/local/bin/
 
 RUN apt-get update && \
   apt-get install -y \
