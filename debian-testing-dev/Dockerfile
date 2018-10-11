@@ -36,7 +36,9 @@ RUN apt-get update && \
     valgrind \
     delta \
     gcc-7 g++-7 \
+    gcc-8 g++-8 \
     clang-6.0 lldb-6.0 libclang-6.0-dev \
+    clang-7.0 lldb-7.0 libclang-7.0-dev \
     && \
   apt-get clean
 

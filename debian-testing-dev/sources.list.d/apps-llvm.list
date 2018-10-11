@@ -33,6 +33,7 @@
 # deb http://apt.llvm.org/unstable/ llvm-toolchain-4.0 main
 # deb http://apt.llvm.org/unstable/ llvm-toolchain-5.0 main
 deb http://apt.llvm.org/unstable/ llvm-toolchain-6.0 main
+deb http://apt.llvm.org/unstable/ llvm-toolchain-7.0 main
 # deb-src http://llvm.org/apt/unstable/ llvm-toolchain main
 # deb-src http://llvm.org/apt/unstable/ llvm-toolchain-3.7 main
 # deb-src http://llvm.org/apt/unstable/ llvm-toolchain-3.8 main
@@ -40,3 +41,4 @@ deb http://apt.llvm.org/unstable/ llvm-toolchain-6.0 main
 # deb-src http://apt.llvm.org/unstable/ llvm-toolchain-4.0 main
 # deb-src http://apt.llvm.org/unstable/ llvm-toolchain-5.0 main
 deb-src http://apt.llvm.org/unstable/ llvm-toolchain-6.0 main
+deb-src http://apt.llvm.org/unstable/ llvm-toolchain-7.0 main
