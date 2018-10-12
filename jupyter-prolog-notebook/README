@@ -1,8 +1,8 @@
 ####
-# Einmaliges Setup
-mkdir ~/jupyter # zum persistenen Speichern der Notebooks auf dem Host
+# First time Setup
+mkdir ~/jupyter # Creating a persistent directory to store jupyter files on the host
 
-# Docker installation
+# Install docker
 # z.B. [1] Docker for Ubuntu Trusty 14.04 (LTS), Xenial 16.04 (LTS) oder Bionic 18.04 (LTS)
 # z.B. [2] Docker for Mac
 # z.B. [3] Docker for Windows
@@ -11,18 +11,11 @@ mkdir ~/jupyter # zum persistenen Speichern der Notebooks auf dem Host
 # [2] https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-for-mac
 # [3] https://docs.docker.com/docker-for-windows/install/#start-docker-for-windows
 
-# Laden des Jupyter Notebooks
+# Pull the Docker image
 docker pull jm1337/jupyter-prolog-notebook
 
 ####
-# Jedes Mal zum Starten des Jupyter Notebooks
-
+# Start the container
 docker run --publish 127.0.0.1:8888:8888 -i -t --name jupyter-prolog-notebook -v ~/jupyter:/home/jovyan/work:rw jm1337/jupyter-prolog-notebook
 
-# Letzter Befehl zeigt eine URL à la "http://127.0.0.1:8888/tree?token=...", diese URL im Browser öffnen.
-
-# Beendet werden kann das Notebook in der Kommandozeile mit CTRL+C oder über die Webseite mit "Quit".
-
-# BEACHTE: Nur die Dateien im Ordner work/ werden persistent gespeichert, alles andere ist nach Beenden des Docker Containers unwiderruflich verloren!
-
-# Nach dem Öffnen eines Jupyter Notebooks (*.ipynb Datei) muss ggf. erst oben rechts auf "Trust" geklickt werden, damit der Code auch wirklich ausgeführt wird!
+# Open "http://127.0.0.1:8888/tree?token=...", as it was printed by the former command in your Browser. Make sure to copy the shown token!
