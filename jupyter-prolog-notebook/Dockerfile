@@ -15,22 +15,6 @@
 
 FROM jupyter/datascience-notebook
 
-# Run interactive (exit with CTRL-C): 
-#  docker run --rm          --publish 127.0.0.1:8888:8888 --interactive --tty --name jm1337-jupyter-prolog-notebook jm1337/jupyter-prolog-notebook
-#
-# Run as deamon:
-#  docker run --rm --detach --publish 127.0.0.1:8888:8888 --interactive --tty --name jm1337-jupyter-prolog-notebook jm1337/jupyter-prolog-notebook
-#  docker stop jm1337-jupyter-prolog-notebook
-#
-# Run and login:
-#  docker run -ti --rm jm1337/jupyter-prolog-notebook bash
-#
-# References:
-#  https://hub.docker.com/_/httpd/
-#  https://docs.docker.com/engine/userguide/networking/
-#  https://github.com/madmax2012/jupyterhub-nbgrader-brsu/blob/master/Dockerfile
-#  https://github.com/madmax2012/SWI-Prolog-Kernel
-
 ARG DEBIAN_FRONTEND=noninteractive
 
 USER root
