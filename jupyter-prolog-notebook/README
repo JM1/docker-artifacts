@@ -1,0 +1,21 @@
+####
+# First time Setup
+mkdir ~/jupyter # Creating a persistent directory to store jupyter files on the host
+
+# Install docker
+# z.B. [1] Docker for Ubuntu Trusty 14.04 (LTS), Xenial 16.04 (LTS) oder Bionic 18.04 (LTS)
+# z.B. [2] Docker for Mac
+# z.B. [3] Docker for Windows
+# Ref.: 
+# [1] https://docs.docker.com/install/linux/docker-ce/ubuntu/
+# [2] https://docs.docker.com/docker-for-mac/install/#install-and-run-docker-for-mac
+# [3] https://docs.docker.com/docker-for-windows/install/#start-docker-for-windows
+
+# Pull the Docker image
+docker pull jm1337/jupyter-prolog-notebook
+
+####
+# Start the container
+docker run --publish 127.0.0.1:8888:8888 -i -t --name jupyter-prolog-notebook -v ~/jupyter:/home/jovyan/work:rw jm1337/jupyter-prolog-notebook
+
+# Open "http://127.0.0.1:8888/tree?token=...", as it was printed by the former command in your Browser. Make sure to copy the shown token!
