@@ -127,7 +127,7 @@ sudo make install
 
 # add library search path
 # NOTE: Only used at runtime, not linktime!
-sudo sh -c "echo '$PREFIX/lib' >> /etc/ld.so.conf.d/Elemental.conf"
+sudo sh -c "echo '$PREFIX/lib/${DEB_BUILD_MULTIARCH}' >> /etc/ld.so.conf.d/Elemental.conf"
 sudo ldconfig
 
 cd /tmp/
