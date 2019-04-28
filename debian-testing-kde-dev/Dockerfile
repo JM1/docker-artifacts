@@ -33,6 +33,7 @@ RUN apt-get update && \
     breeze oxygen-icon-theme plasma-integration konsole kate dolphin systemsettings \
     kde-sc-dev-latest \
     libomp-dev libnetcdf-c++4-dev libnetcdf-dev netcdf-bin libvtk6-dev python-vtk6 paraview \
+    'python[0-9]?-pyqt5\.[a-zA-Z0-9]*$' \
     'libkf5([^k]+|(k([^f]|$)|kf([^a]|$)|kfa([^c]|$)|kfac([^e]|$)))+.*dev' \
     plasma-framework plasma-workspace-dev kdoctools-dev \
     plasma-workspace-wayland \
