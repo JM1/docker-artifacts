@@ -28,26 +28,19 @@ export PATH="/usr/lib/ccache:$PATH"
 export CC=gcc
 export CXX=g++
 
-cd /var/tmp/
-git clone --depth 1 https://github.com/fmtlib/fmt.git
+cd /usr/local/src/
+git -C /tmp/ clone --depth 1 https://github.com/fmtlib/fmt.git
+sudo mv -i /tmp/fmt .
 cd fmt/
 
 
 mkdir build && cd build/
 cmake \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=Debug \
     -DCMAKE_INSTALL_PREFIX="$PREFIX" \
     ..
 
 make -j$(nproc)
-
 sudo make install
 
-cd /tmp/
-rm -rf /var/tmp/fmt
-
 exit
-
-
-
-

@@ -33,9 +33,10 @@ eval $(dpkg-architecture)
 export PATH="/usr/lib/ccache:$PATH"
 export CC=gcc
 
-cd /var/tmp/
+cd /usr/local/src/
 # build/update-version-file.sh requires full clone for version detection
-git clone https://github.com/flame/libflame.git
+git -C /tmp/ clone https://github.com/flame/libflame.git
+sudo mv -i /tmp/libflame .
 cd libflame/
 
 
@@ -76,8 +77,5 @@ sudo ldconfig
 for f in libflame.so libflame.a; do
     sudo ln -s "$PREFIX/lib/$f" "/usr/lib/${DEB_BUILD_MULTIARCH}/$f"
 done
-
-cd /tmp/
-rm -rf /var/tmp/libflame/
 
 exit

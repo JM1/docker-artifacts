@@ -40,8 +40,9 @@ export PATH="/usr/lib/ccache:$PATH"
 export CC=gcc
 export CXX=g++
 
-cd /var/tmp/
-git clone --depth 1 https://github.com/elemental/Elemental.git
+cd /usr/local/src/
+git -C /tmp/ clone --depth 1 https://github.com/elemental/Elemental.git
+sudo mv -i /tmp/Elemental .
 
 cd Elemental/
 
@@ -98,7 +99,7 @@ EOF
 
 mkdir build && cd build/
 cmake \
-    -DCMAKE_BUILD_TYPE=Release \
+    -DCMAKE_BUILD_TYPE=Debug \
     -DBINARY_SUBDIRECTORIES=OFF \
     -DEL_USE_QT5=ON \
     -DEL_TESTS=ON \
@@ -129,9 +130,6 @@ sudo make install
 # NOTE: Only used at runtime, not linktime!
 sudo sh -c "echo '$PREFIX/lib/${DEB_BUILD_MULTIARCH}' >> /etc/ld.so.conf.d/Elemental.conf"
 sudo ldconfig
-
-cd /tmp/
-rm -rf /var/tmp/Elemental
 
 exit
 
