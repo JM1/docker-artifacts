@@ -1,0 +1,18 @@
+---
+- copy:
+    src: "{{ distribution_codename }}/"
+    dest: /
+    mode: preserve
+
+- apt:
+    update_cache: yes
+    upgrade: dist
+
+- apt:
+    name: "{{ __apt_packages }}"
+
+# Workaround for https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=867705
+- shell: |
+    cat /usr/local/src/update-ccache-symlinks.patch | patch -p0 -d /
+    update-ccache-symlinks
+
