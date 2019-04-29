@@ -1,0 +1,38 @@
+---
+- apt:
+    update_cache: yes
+    upgrade: dist
+
+- apt:
+    name: "{{ __apt_packages }}"
+
+# Ansible's systemd module fails with Packer's docker builder:
+#  "System has not been booted with systemd as init system (PID 1). Can't operate.
+#   Failed to connect to bus: Host is down"
+
+- shell: systemctl mask "{{ item }}"
+  loop:
+  - keyboard-setup.service
+  - system-getty.slice
+  - console-setup.service
+
+# NOTE: systemd-tmpfiles-setup.service is required e.g. for creation of /run/screen directory
+# TODO: Mask systemd-remount-fs.service systemd-update-utmp.service systemd-sysusers.service, too?
+
+# mask services that do not make sense in containers
+- shell: systemctl mask "{{ item }}"
+  loop:
+  - NetworkManager.service
+  - ModemManager.service
+  - avahi-daemon.socket
+  - avahi-daemon.service
+  - wpa_supplicant.service
+  - udisks2.service
+  - upower.service
+
+- copy:
+    src: "{{ distribution_codename }}/"
+    dest: /
+    mode: preserve
+
+- shell: systemctl enable prepare-container.service
