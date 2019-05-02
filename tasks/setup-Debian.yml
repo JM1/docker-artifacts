@@ -1,0 +1,51 @@
+---
+- copy:
+    src: "{{ distribution_codename }}/"
+    dest: /
+    mode: preserve
+
+- template:
+    src: "{{ distribution_codename }}/usr/local/src/kdesrc/.kdesrc-buildrc.j2"
+    dest: /usr/local/src/kdesrc/.kdesrc-buildrc
+  when: install_prefix is defined and install_prefix
+
+- file:
+    path: /usr/local/src/kdesrc/
+    owner: nobody
+    state: directory
+    mode: "a+rx"
+    recurse: yes
+
+- apt:
+    update_cache: yes
+    upgrade: dist
+
+- apt:
+    name: "{{ __apt_packages }}"
+
+# # Workarounds
+# [ ! -d ~/.local/share/kservicetypes5/ ] && { 
+#     mkdir -p ~/.local/share/kservicetypes5/ && \
+#     ln -s /usr/share/kservicetypes5/plasma-dataengine.desktop ~/.local/share/kservicetypes5/plasma-dataengine.desktop;
+# }
+# ln -s /usr/share/kf5/ ~/.local/share/kf5
+
+- name: Build KDevelop from source
+  # References:
+  #  http://kfunk.org/2016/02/16/building-kdevelop-5-from-source-on-ubuntu-15-10/
+  #  https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source
+  shell: |
+    cd /usr/local/src/kdesrc/
+    if [ ! -e kdesrc-build ]; then
+        git clone --depth 1 kde:kdesrc-build
+        ln -s /usr/local/src/kdesrc/kdesrc-build/kdesrc-build /usr/local/bin/
+    else
+        (cd kdesrc-build && git pull)
+    fi
+    
+    for module in kdevelop-pg-qt kdevelop kdev-php kdev-python kdev-valgrind; do
+        sudo -u nobody kdesrc-build --debug --no-install "$module"
+        make install
+    done
+  environment:
+    HOME: /usr/local/src/kdesrc/
