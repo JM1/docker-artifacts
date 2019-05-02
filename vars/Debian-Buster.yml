@@ -1,0 +1,6 @@
+---
+__apt_packages:
+  - haskell-platform
+
+# TODO: re-add package ghc-mod as soon as it supports GHC 8.2.1+
+# Ref.: https://github.com/DanielG/ghc-mod/issues/900

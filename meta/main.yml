@@ -1,0 +1,22 @@
+galaxy_info:
+  role_name: dev_haskell
+  author: Jakob Meng
+  description: setup a haskell development environment
+  company: Hochschule Bonn-Rhein-Sieg
+  license: license (GPLv3)
+
+  min_ansible_version: 2.7
+
+  platforms:
+  # Ref.: https://galaxy.ansible.com/api/v1/platforms/
+  - name: Debian
+    versions:
+    - buster
+
+  galaxy_tags:
+  - development
+  - system
+
+dependencies:
+- jm1.common
+- jm1.virtual_pkg
