@@ -1,0 +1,6 @@
+---
+- include_vars: "{{ distribution_codename }}.yml"
+
+- import_tasks: setup-Debian.yml
+  become: yes
+  when: ansible_os_family == 'Debian'
