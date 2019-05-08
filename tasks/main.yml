@@ -1,11 +1,6 @@
 ---
 - include_vars: "{{ distribution_codename }}.yml"
 
-- set_fact:
-    apt_packages: "{{ apt_packages|list + __apt_packages|list }}"
-
-- debug:
-    msg: "apt_packages: {{ apt_packages }}"
-
-- include_tasks: setup-Debian.yml
+- import_tasks: setup-Debian.yml
+  become: yes
   when: ansible_os_family == 'Debian'

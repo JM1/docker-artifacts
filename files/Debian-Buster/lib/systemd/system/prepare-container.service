@@ -1,4 +1,4 @@
-# (2018) WEARENOTALONE
+# (2018-2019) WEARENOTALONE
 
 [Unit]
 Description=prepare-container
@@ -8,7 +8,7 @@ ConditionFileIsExecutable=/usr/bin/prepare-container
 
 [Service]
 Type=oneshot
-PassEnvironment=DISPLAY DEVIL_HOME
+PassEnvironment=DISPLAY
 ExecStart=/usr/bin/prepare-container
 RemainAfterExit=yes
 StandardOutput=journal+console
