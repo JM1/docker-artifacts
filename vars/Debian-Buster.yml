@@ -11,10 +11,10 @@ __apt_packages:
   - qml
   - qt5-qmake
   - qtcreator
-  - "libqt5*-dev"
-  - "qt*5-dev"
-  - "qt*5-private-dev"
-  - "qt*5-dev-tools"
+  - 'libqt5.*-dev'
+  - 'qt.*5-dev'
+  - 'qt.*5-private-dev'
+  - 'qt.*5-dev-tools'
   #
   - libkchart-dev
   - libdwarf-dev
@@ -52,9 +52,9 @@ __apt_packages:
   - libsvn-dev
   - libnm-dev
   #
-  #- 'python[0-9]?-pyqt5.[a-zA-Z0-9]*$' 
+  - 'python[0-9]?-pyqt5.[a-zA-Z0-9]*$' 
   #- 'libkf5([^k]+|(k([^f]|$)|kf([^a]|$)|kfa([^c]|$)|kfac([^e]|$)))+.*dev' 
-  - 'libkf5*dev' 
+  - 'libkf5.*dev' 
   - plasma-workspace-dev
   - okteta-dev
   - kdoctools-dev
@@ -90,4 +90,4 @@ __apt_packages:
 #   libkf5kface-dev by use of a posix regular expression.
 # - libnm-glib-dev, libnm-glib-vpn-dev and libnm-util-dev are deprecated since network-manager 1.12.0-4
 
-install_prefix: /usr/local
+__install_prefix: /usr/local

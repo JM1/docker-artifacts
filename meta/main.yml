@@ -18,4 +18,5 @@ galaxy_info:
   - system
 
 dependencies:
+- jm1.virtual_pkg
 - jm1.dev_cpp

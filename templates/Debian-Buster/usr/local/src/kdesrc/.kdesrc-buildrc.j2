@@ -20,10 +20,14 @@ global
     source-dir /usr/local/src/kdesrc
 
     ignore-kde-structure true
-    make-options -j$(nproc)
-    make-install-prefix sudo -S
-    cmake-options -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    # make-options -j4
+    # make-install-prefix sudo -S
+    install-after-build false
+    cmake-options -G Ninja -DCMAKE_BUILD_TYPE=RelWithDebInfo
+    custom-build-command ninja
     kde-languages de
+    
+    run-tests false
 end global
 
 # Instead of specifying modules here, the current best practice is to refer to
@@ -45,4 +49,34 @@ include /usr/local/src/kdesrc/kdesrc-build/kf5-qt5-build-include
 # included), e.g.
 options kcoreaddons
     # make-options -j4
+end options
+
+# https://github.com/KDE/clazy
+options clazy
+    branch 1.5
+end options
+
+# https://github.com/KDE/kdevelop-pg-qt
+options kdevelop-pg-qt
+    branch 2.2
+end options
+
+# https://github.com/KDE/kdevelop
+options kdevelop
+    branch 5.3
+end options
+
+# https://github.com/KDE/kdev-php
+options kdev-php
+    branch 5.3
+end options
+
+# https://github.com/KDE/kdev-python
+options kdev-python
+    branch 5.3
+end options
+
+# https://github.com/KDE/kdev-valgrind
+options kdev-valgrind
+    branch 5.1
 end options
