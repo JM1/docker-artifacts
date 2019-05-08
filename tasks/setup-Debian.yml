@@ -1,18 +1,19 @@
 ---
+- set_fact:
+    apt_packages: "{{ __apt_packages|list }}"
+  when: apt_packages|default(None) == None
+
 - copy:
     src: "{{ distribution_codename }}/"
     dest: /
     mode: preserve
 
-- apt:
-    update_cache: yes
-    upgrade: dist
+- include_role:
+    name: jm1.virtual_pkg
+  vars:
+     package_name: "jm1-dev-cpp"
+     package_depends: "{{ apt_packages }}"
 
-- apt:
-    name: "{{ __apt_packages }}"
-
-# Workaround for https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=867705
-- shell: |
-    cat /usr/local/src/update-ccache-symlinks.patch | patch -p0 -d /
-    update-ccache-symlinks
+- set_fact:
+    apt_packages: !!null
 

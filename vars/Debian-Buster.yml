@@ -5,6 +5,7 @@ __apt_packages:
   - gdb
   - ccache
   - clang
+  - ninja-build
   - llvm
   - libclang-dev
   - cloc
@@ -13,6 +14,7 @@ __apt_packages:
   - doxygen
   - cmake
   - extra-cmake-modules
+  - libgoogle-perftools-dev
   - google-perftools
   - bzr
   - mercurial
@@ -30,6 +32,11 @@ __apt_packages:
   - clang-7
   - lldb-7
   - libclang-7-dev
+  - libboost-all-dev
+  - libc++-dev
+  - libomp-dev # OpenMP
+  - clang-tools-7
+  - clang-tidy-7
 
 # ubuntu-dev-tools requires entries in ppa-ubuntu-toolchain-r.list to be uncommented
 #
