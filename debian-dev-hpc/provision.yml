@@ -1,0 +1,8 @@
+---
+- hosts: all
+
+  roles:
+  - jm1.base_system
+  - jm1.container_docker
+  - jm1.dev_cpp
+  - jm1.dev_hpc

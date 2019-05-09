@@ -1,4 +1,4 @@
-# Copyright (c) 2018-2019 Jakob Meng, <jakobmeng@web.de>
+# Copyright (c) 2019 Jakob Meng, <jakobmeng@web.de>
 # 
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -13,24 +13,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-FROM jupyter/datascience-notebook
+FROM jm1337/debian-systemd-core:testing
 
-ARG DEBIAN_FRONTEND=noninteractive
+#USER devil
+#ENV HOME /home/devil
+#WORKDIR /home/devil
+#ENV SHELL /bin/bash
 
-USER root
+ENV container docker
+STOPSIGNAL SIGRTMIN+3
 
-RUN apt-get update && \
-  apt-get install -y \
-    git swi-prolog && \
-  apt-get clean
-
-USER $NB_UID
-
-RUN pip install backports.tempfile && \
-  mkdir -p /opt/conda/share/jupyter/kernels/swi/ && \
-  cd /tmp/ && \
-  git clone --depth 1 https://github.com/madmax2012/SWI-Prolog-Kernel && \
-  cd SWI-Prolog-Kernel && \
-  mv -i kernel.json swipl_kernel.py /opt/conda/share/jupyter/kernels/swi/ && \
-  cd ../ && \
-  rm -rf SWI-Prolog-Kernel
+CMD [ "/sbin/init", "--show-status=false" ] #, "--log-target=null" ]

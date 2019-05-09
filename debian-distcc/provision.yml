@@ -1,0 +1,17 @@
+---
+- hosts: all
+
+  roles:
+  - jm1.base_system
+  - jm1.container_docker
+  - jm1.dev_cpp
+  - jm1.dev_hpc
+  - role: jm1.distcc
+    vars:
+      distcc_start: "true"
+      distcc_allowed_nets:
+      - "0.0.0.0/0"
+      distcc_listener: []
+
+# NOTE: Roles must resemble the development environment you use for consistent distcc builds,
+#       e.g. compilers, headers and libraries on server and client side should match.

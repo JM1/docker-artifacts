@@ -1,0 +1,51 @@
+{
+    "_copyright": "Copyright (c) 2019 Jakob Meng, <jakobmeng@web.de>",
+
+    "variables": {
+        "docker_image": "debian",
+        "docker_repository": "jm1337/debian",
+        "docker_tag": "latest",
+        "docker_pull": "true",
+        "docker_changes": "",
+
+        "ansible_user": "root",
+        "ansible_host": "{{timestamp}}{{uuid}}",
+        "ansible_connection": "docker"
+    },
+
+    "builders": [{
+        "type": "docker",
+        "image": "{{user `docker_image`}}",
+        "commit": true,
+        "pull": "{{user `docker_pull`}}",
+        "run_command": [ "-d", "-i", "-t", "--name", "{{user `ansible_host`}}", "{{.Image}}", "/bin/bash" ],
+        "changes": "{{user `docker_changes`}}"
+    }],
+
+    "provisioners": [{
+        "type": "shell",
+        "environment_vars": ["DEBIAN_FRONTEND=noninteractive"],
+        "inline": [
+            "[ ! -e /var/cache/apt/pkgcache.bin ] || [ -z \"$(find /var/cache/apt/pkgcache.bin -mmin -60)\" ] && apt-get update",
+            "apt-get install -y python"
+        ]
+    },{
+        "type": "ansible",
+        "playbook_file": "provision.yml",
+        "extra_arguments": [
+            "-vvv",
+            "--extra-vars",
+            "ansible_user={{user `ansible_user`}} ansible_host={{user `ansible_host`}} ansible_connection={{user `ansible_connection`}}"
+        ]
+    }],
+
+    "post-processors": [{
+        "type": "docker-tag",
+        "repository": "{{user `docker_repository`}}",
+        "tag": "{{user `docker_tag`}}-{{isotime \"20060102\"}}"
+    },{
+        "type": "docker-tag",
+        "repository": "{{user `docker_repository`}}",
+        "tag": "{{user `docker_tag`}}"
+    }]
+}

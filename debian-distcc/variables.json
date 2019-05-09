@@ -1,0 +1,6 @@
+{
+    "docker_image": "jm1337/debian-dev-hpc:testing",
+    "docker_repository": "jm1337/debian-distcc-core",
+    "docker_tag": "testing",
+    "docker_pull": "false"
+}

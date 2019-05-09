@@ -1,0 +1,15 @@
+---
+- hosts: all
+
+  roles:
+  - jm1.base_system
+  - jm1.container_docker
+  - jm1.container_systemd
+  - role: jm1.container_user
+    vars:
+      username: devil
+      password: "{{ 'devil' | password_hash('sha512', 'devil') }}"
+      admin: yes
+      system: no
+      uid: 1000
+      shell: "/bin/bash"

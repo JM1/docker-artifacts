@@ -1,0 +1,5 @@
+{
+    "docker_image": "debian:testing",
+    "docker_repository": "jm1337/debian",
+    "docker_tag": "testing"
+}

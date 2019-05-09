@@ -13,24 +13,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-FROM jupyter/datascience-notebook
+FROM jm1337/debian:testing
 
 ARG DEBIAN_FRONTEND=noninteractive
 
-USER root
-
 RUN apt-get update && \
   apt-get install -y \
-    git swi-prolog && \
+    mesa-utils && \
   apt-get clean
-
-USER $NB_UID
-
-RUN pip install backports.tempfile && \
-  mkdir -p /opt/conda/share/jupyter/kernels/swi/ && \
-  cd /tmp/ && \
-  git clone --depth 1 https://github.com/madmax2012/SWI-Prolog-Kernel && \
-  cd SWI-Prolog-Kernel && \
-  mv -i kernel.json swipl_kernel.py /opt/conda/share/jupyter/kernels/swi/ && \
-  cd ../ && \
-  rm -rf SWI-Prolog-Kernel

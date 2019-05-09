@@ -1,0 +1,22 @@
+---
+- hosts: all
+
+  roles:
+  - jm1.base_system
+  - jm1.container_docker
+  - role: jm1.container_user
+    vars:
+      username: devil
+      password: "{{ 'devil' | password_hash('sha512', 'devil') }}"
+      admin: yes
+      system: no
+      uid: 1000
+      shell: "/bin/bash"
+  - jm1.container_systemd
+  - jm1.dev_cpp
+  - jm1.dev_freetz
+  - jm1.dev_hpc
+  - jm1.dev_haskell
+  - jm1.dev_openwrt
+  - jm1.dev_prolog
+  - jm1.kdevelop

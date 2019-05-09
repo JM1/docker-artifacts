@@ -1,0 +1,10 @@
+- hosts: all
+
+  roles:
+  - jm1.base_system
+  - jm1.container_docker
+
+  tasks:
+    - debug: var=inventory_hostname
+    - debug: var=ansible_hostname
+    - debug: var=hostvars

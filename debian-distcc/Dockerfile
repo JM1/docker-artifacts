@@ -13,24 +13,14 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-FROM jupyter/datascience-notebook
+FROM jm1337/debian-distcc-core:testing
 
-ARG DEBIAN_FRONTEND=noninteractive
+# Allow all incoming requests by default (--allow 0.0.0.0/0) which is supported since 2.10.2cvs!
+# Use iptables to restrict connections to the docker daemon!
+# References: 
+#  https://docs.docker.com/network/iptables/#restrict-connections-to-the-docker-daemon
+#  https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=207831
 
-USER root
+EXPOSE 3632
 
-RUN apt-get update && \
-  apt-get install -y \
-    git swi-prolog && \
-  apt-get clean
-
-USER $NB_UID
-
-RUN pip install backports.tempfile && \
-  mkdir -p /opt/conda/share/jupyter/kernels/swi/ && \
-  cd /tmp/ && \
-  git clone --depth 1 https://github.com/madmax2012/SWI-Prolog-Kernel && \
-  cd SWI-Prolog-Kernel && \
-  mv -i kernel.json swipl_kernel.py /opt/conda/share/jupyter/kernels/swi/ && \
-  cd ../ && \
-  rm -rf SWI-Prolog-Kernel
+CMD ["/usr/bin/distccd", "--allow", "0.0.0.0/0", "--daemon", "--verbose", "--no-detach"]
