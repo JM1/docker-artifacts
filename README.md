@@ -17,6 +17,8 @@ make docker-pull
 
 ## How to build images locally
 
+Building the docker images requires Docker, Packer, Ansible (>=2.7) and GNU make.
+
 ```
 # get docker-artifacts
 git clone --depth 1 https://github.com/JM1/docker-artifacts.git
