@@ -2,7 +2,7 @@
 # kate: syntax Makefile; tab-indents on; replace-tabs off;
 
 DOCKER_REPOSITORY = jm1337/debian-dev-full
-DOCKER_TAG = testing
+DOCKER_TAG = buster
 
 include ../.config/ansible.mk
 include ../.config/packer.mk

@@ -1,5 +1,5 @@
 {
-    "docker_image": "debian:testing",
+    "docker_image": "debian:buster",
     "docker_repository": "jm1337/debian",
-    "docker_tag": "testing"
+    "docker_tag": "buster"
 }

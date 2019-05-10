@@ -11,7 +11,7 @@ git clone --depth 1 https://github.com/JM1/docker-artifacts.git
 # pull all images
 make docker-pull
 
-# build only e.g. jm1337/debian:testing
+# build only e.g. jm1337/debian:buster
 (cd debian && make docker-pull)
 ```
 
@@ -26,7 +26,7 @@ git clone --depth 1 https://github.com/JM1/docker-artifacts.git
 # build all images
 make
 
-# build only e.g. jm1337/debian:testing
+# build only e.g. jm1337/debian:buster
 (cd debian && make)
 ```
 
@@ -42,6 +42,6 @@ make
 # push all images
 make docker-push
 
-# push only e.g. debian:testing
+# push only e.g. debian:buster
 (cd debian && make docker-push)
 ```

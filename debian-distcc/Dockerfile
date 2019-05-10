@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-FROM jm1337/debian-distcc-core:testing
+FROM jm1337/debian-distcc-core:buster
 
 # Allow all incoming requests by default (--allow 0.0.0.0/0) which is supported since 2.10.2cvs!
 # Use iptables to restrict connections to the docker daemon!

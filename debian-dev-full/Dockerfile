@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-FROM jm1337/debian-dev-full-core:testing
+FROM jm1337/debian-dev-full-core:buster
 
 ENV container docker
 STOPSIGNAL SIGRTMIN+3

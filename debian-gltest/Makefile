@@ -2,7 +2,7 @@
 # kate: syntax Makefile; tab-indents on; replace-tabs off;
 
 DOCKER_REPOSITORY = jm1337/debian-gltest
-DOCKER_TAG = testing
+DOCKER_TAG = buster
 
 include ../.config/docker.mk
 

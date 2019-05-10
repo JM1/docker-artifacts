@@ -3,7 +3,7 @@
 
 
 DOCKER_REPOSITORY = jm1337/debian-dev-hbrs
-DOCKER_TAG = testing
+DOCKER_TAG = buster
 
 include ../.config/ansible.mk
 include ../.config/packer.mk
