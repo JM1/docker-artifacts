@@ -1,7 +1,8 @@
 ---
 - src: jm1.base_system
 - src: jm1.container_docker
-- src: jm1.container_user
 - src: jm1.dev_cpp
 - src: jm1.dev_hpc
 - src: jm1.kdevelop
+- src: jm1.sudo
+- src: jm1.virtual_pkg
