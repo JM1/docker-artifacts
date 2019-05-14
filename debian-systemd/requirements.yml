@@ -2,4 +2,5 @@
 - src: jm1.base_system
 - src: jm1.container_docker
 - src: jm1.container_systemd
-- src: jm1.container_user
+- src: jm1.sudo
+- src: jm1.virtual_pkg
