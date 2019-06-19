@@ -1,5 +1,5 @@
 ---
-__apt_packages:
+__apt_packages_common:
   - libmbedtls-dev
   - libusb-1.0-0-dev
   - libxml2-dev
@@ -15,7 +15,27 @@ __apt_packages:
   - 'qt.*5-dev'
   - 'qt.*5-private-dev'
   - 'qt.*5-dev-tools'
+  - 'python[0-9]?-pyqt5.[a-zA-Z0-9]*$'
+  - heaptrack
+  - heaptrack-gui
+  - konsole-kpart
+  - kde-sc-dev-latest
   #
+  - okteta
+  - breeze-icon-theme
+  - breeze
+  - oxygen-icon-theme
+  - plasma-integration
+  - konsole
+  - kate
+  - dolphin
+  - systemsettings
+  - plasma-framework
+  - plasma-workspace-wayland
+  - python-docutils
+  - kde-l10n-de
+
+__apt_packages_build_deps:
   - libkchart-dev
   - libdwarf-dev
   - libsparsehash-dev
@@ -51,8 +71,6 @@ __apt_packages:
   - liblmdb-dev
   - libsvn-dev
   - libnm-dev
-  #
-  - 'python[0-9]?-pyqt5.[a-zA-Z0-9]*$' 
   #- 'libkf5([^k]+|(k([^f]|$)|kf([^a]|$)|kfa([^c]|$)|kfac([^e]|$)))+.*dev' 
   - 'libkf5.*dev' 
   - plasma-workspace-dev
@@ -60,24 +78,13 @@ __apt_packages:
   - kdoctools-dev
   - libgrantlee5-dev
   - libkomparediff2-dev
-  - heaptrack
-  - heaptrack-gui
-  - konsole-kpart
-  - kde-sc-dev-latest
-  #
-  - okteta
-  - breeze-icon-theme
-  - breeze
-  - oxygen-icon-theme
-  - plasma-integration
-  - konsole
-  - kate
-  - dolphin
-  - systemsettings
-  - plasma-framework
-  - plasma-workspace-wayland
-  - python-docutils
-  - kde-l10n-de
+
+__apt_packages_kdevelop:
+  - kdevelop
+  - clazy
+  - kdevelop-php
+  - kdevelop-python
+  - plasma-kdevelop
 
 # NOTE:
 # - in Debian Stretch and later libpolarssl-dev has been renamed to libmbedtls-dev
@@ -91,3 +98,5 @@ __apt_packages:
 # - libnm-glib-dev, libnm-glib-vpn-dev and libnm-util-dev are deprecated since network-manager 1.12.0-4
 
 __install_prefix: /usr/local
+
+__install_from_source: false

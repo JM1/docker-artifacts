@@ -1,79 +1,104 @@
 ---
 - set_fact:
-    apt_packages: "{{ __apt_packages|list }}"
-  when: apt_packages|default(None) == None
+    apt_packages_common: "{{ __apt_packages_common|list }}"
+  when: apt_packages_common|default(None) == None
+
+- set_fact:
+    apt_packages_build_deps: "{{ __apt_packages_build_deps|list }}"
+  when: apt_packages_build_deps|default(None) == None
+
+- set_fact:
+    apt_packages_kdevelop: "{{ __apt_packages_kdevelop|list }}"
+  when: apt_packages_kdevelop|default(None) == None
 
 - set_fact:
     install_prefix: "{{ __install_prefix }}"
   when: install_prefix|default(None) == None
 
-- copy:
-    src: "{{ distribution_codename }}/"
-    dest: /
-    mode: preserve
+- set_fact:
+    install_from_source: "{{ __install_from_source }}"
+  when: install_from_source|default(None) == None
 
-- template:
-    src: "{{ distribution_codename }}/usr/local/src/kdesrc/.kdesrc-buildrc.j2"
-    dest: /usr/local/src/kdesrc/.kdesrc-buildrc
+- when: not install_from_source
+  block:
+  - include_role:
+      name: jm1.virtual_pkg
+    vars:
+       package_name: "jm1-kdevelop"
+       package_depends: "{{ apt_packages_common + apt_packages_kdevelop }}"
 
-- file:
-    path: /usr/local/src/kdesrc/
-    owner: nobody
-    state: directory
-    mode: "a+rx"
-    recurse: yes
-
-- include_role:
-    name: jm1.virtual_pkg
-  vars:
-     package_name: "jm1-kdevelop"
-     package_depends: "{{ apt_packages }}"
-
-# # Workarounds
-# [ ! -d ~/.local/share/kservicetypes5/ ] && { 
-#     mkdir -p ~/.local/share/kservicetypes5/ && \
-#     ln -s /usr/share/kservicetypes5/plasma-dataengine.desktop ~/.local/share/kservicetypes5/plasma-dataengine.desktop;
-# }
-# ln -s /usr/share/kf5/ ~/.local/share/kf5
-
-- name: Build KDevelop from source
-  # References:
-  #  http://kfunk.org/2016/02/16/building-kdevelop-5-from-source-on-ubuntu-15-10/
-  #  https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source
-  shell: |
-    set -e
-    cd /usr/local/src/kdesrc/
-    
-    # kdesrc-build must be able to find system-provided kde files or else kdevelop build fails with errors like:
-    #  FAILED: app/plasma/dataengine/plasma-dataengine-kdevelopsessions.json 
-    #  cd /usr/local/src/kdesrc/kdevelop/app/plasma/dataengine && /usr/bin/desktoptojson -i plasma-dataengine-kdevelopsessions.desktop -o /usr/local/src/kdesrc/build/kdevelop/app/plasma/dataengine/plasma-dataengine-kdevelopsessions.json -s plasma-dataengine.desktop
-    #  Warning: Could not locate service type file kservicetypes5/plasma-dataengine.desktop, tried ("/usr/local/src/kdesrc/.local/share", "/usr/local/share") and ":/kservicetypes5/plasma-dataengine.desktop" ((null):0, (null))
-    #  About to parse service type file "plasma-dataengine.desktop"
-    #
-    # NOTE: Another reason for this error message might be issue #208, which
-    #       is solved since Docker 18.04 and libseccomp-2.3.3 [1][2].
-    #       Ref.:
-    #        [1] https://github.com/docker/for-linux/issues/208
-    #        [2] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=901062
-    if [ ! -e .local ]; then
-        mkdir .local
-        ln -s /usr/share .local/share
-    fi
-    
-    if [ ! -e kdesrc-build ]; then
-        git clone --depth 1 kde:kdesrc-build
-        ln -s /usr/local/src/kdesrc/kdesrc-build/kdesrc-build /usr/local/bin/
-    else
-        (cd kdesrc-build && git pull)
-    fi
-    
-    for module in clazy kdevelop-pg-qt kdevelop kdev-php kdev-python kdev-valgrind; do
-        sudo -u nobody HOME="$HOME" kdesrc-build --debug --no-install "$module"
-        (cd build/$module && ninja install)
-    done
-  environment:
-    HOME: /usr/local/src/kdesrc/
+- when: install_from_source
+  block:
+  - copy:
+      src: "{{ distribution_codename }}/usr/local/src/kdesrc/"
+      dest: /usr/local/src/kdesrc/
+      mode: preserve
+  
+  - template:
+      src: "{{ distribution_codename }}/usr/local/src/kdesrc/.kdesrc-buildrc.j2"
+      dest: /usr/local/src/kdesrc/.kdesrc-buildrc
+  
+  - file:
+      path: /usr/local/src/kdesrc/
+      owner: nobody
+      state: directory
+      mode: "a+rx"
+      recurse: yes
+  
+  - include_role:
+      name: jm1.virtual_pkg
+    vars:
+       package_name: "jm1-kdevelop"
+       package_depends: "{{ apt_packages_common + apt_packages_build_deps }}"
+  
+  # # Workarounds
+  # [ ! -d ~/.local/share/kservicetypes5/ ] && { 
+  #     mkdir -p ~/.local/share/kservicetypes5/ && \
+  #     ln -s /usr/share/kservicetypes5/plasma-dataengine.desktop ~/.local/share/kservicetypes5/plasma-dataengine.desktop;
+  # }
+  # ln -s /usr/share/kf5/ ~/.local/share/kf5
+  
+  - name: Build KDevelop from source
+    # References:
+    #  http://kfunk.org/2016/02/16/building-kdevelop-5-from-source-on-ubuntu-15-10/
+    #  https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source
+    shell: |
+      set -e
+      cd /usr/local/src/kdesrc/
+      
+      # kdesrc-build must be able to find system-provided kde files or else kdevelop build fails with errors like:
+      #  FAILED: app/plasma/dataengine/plasma-dataengine-kdevelopsessions.json 
+      #  cd /usr/local/src/kdesrc/kdevelop/app/plasma/dataengine && /usr/bin/desktoptojson -i plasma-dataengine-kdevelopsessions.desktop -o /usr/local/src/kdesrc/build/kdevelop/app/plasma/dataengine/plasma-dataengine-kdevelopsessions.json -s plasma-dataengine.desktop
+      #  Warning: Could not locate service type file kservicetypes5/plasma-dataengine.desktop, tried ("/usr/local/src/kdesrc/.local/share", "/usr/local/share") and ":/kservicetypes5/plasma-dataengine.desktop" ((null):0, (null))
+      #  About to parse service type file "plasma-dataengine.desktop"
+      #
+      # NOTE: Another reason for this error message might be issue #208, which
+      #       is solved since Docker 18.04 and libseccomp-2.3.3 [1][2].
+      #       Ref.:
+      #        [1] https://github.com/docker/for-linux/issues/208
+      #        [2] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=901062
+      if [ ! -e .local ]; then
+          mkdir .local
+          ln -s /usr/share .local/share
+      fi
+      
+      if [ ! -e kdesrc-build ]; then
+          git clone --depth 1 kde:kdesrc-build
+          ln -s /usr/local/src/kdesrc/kdesrc-build/kdesrc-build /usr/local/bin/
+      else
+          (cd kdesrc-build && git pull)
+      fi
+      
+      for module in clazy kdevelop-pg-qt kdevelop kdev-php kdev-python kdev-valgrind; do
+          sudo -u nobody HOME="$HOME" kdesrc-build --debug --no-install "$module"
+          (cd build/$module && ninja install)
+      done
+    environment:
+      HOME: /usr/local/src/kdesrc/
 
 - set_fact:
-    apt_packages: !!null
+    apt_packages_common: !!null
+    apt_packages_build_deps: !!null
+    apt_packages_kdevelop: !!null
     install_prefix: !!null
+    install_from_source: !!null
