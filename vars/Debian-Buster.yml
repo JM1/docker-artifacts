@@ -1,0 +1,15 @@
+---
+__apt_packages:
+  - cython
+  - cython3
+  - ipython3
+  - pep8
+  - pypy
+  - pypy-doc
+  - pyqt5-dev
+  - pyqt5-dev-tools
+  - pyqt5-examples
+  - python-pip
+  - python3-pip
+  - swig3.0
+  - virtualenv
