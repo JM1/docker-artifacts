@@ -1,0 +1,13 @@
+---
+- set_fact:
+    apt_packages: "{{ __apt_packages|list }}"
+  when: apt_packages|default(None) == None
+
+- include_role:
+    name: jm1.virtual_pkg
+  vars:
+     package_name: "jm1-dev-embedded"
+     package_depends: "{{ apt_packages }}"
+
+- set_fact:
+    apt_packages: !!null
