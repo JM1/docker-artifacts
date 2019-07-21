@@ -1,21 +1,19 @@
 ---
 __apt_packages_common:
-  - libmbedtls-dev
-  - libusb-1.0-0-dev
-  - libxml2-dev
-  - libopencv-dev
-  #
   - bison
   - flex
   - mesa-utils
   - qml
   - qt5-qmake
+#  - qt5-doc
   - qtcreator
   - 'libqt5.*-dev'
   - 'qt.*5-dev'
   - 'qt.*5-private-dev'
   - 'qt.*5-dev-tools'
   - 'python[0-9]?-pyqt5.[a-zA-Z0-9]*$'
+  - 'qt.*5-examples'
+  - qt5-image-formats-plugins
   - heaptrack
   - heaptrack-gui
   - konsole-kpart
@@ -31,9 +29,18 @@ __apt_packages_common:
   - dolphin
   - systemsettings
   - plasma-framework
+  - plasma-sdk
   - plasma-workspace-wayland
   - python-docutils
   - kde-l10n-de
+#  - qt4-demos
+#  - qt4-designer
+  - qt4-dev-tools
+#  - qt4-doc
+  - qt4-qmake
+  - qt4-qmlviewer
+#  - qt4-qtconfig
+
 
 __apt_packages_build_deps:
   - libkchart-dev
