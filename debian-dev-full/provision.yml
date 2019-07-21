@@ -21,12 +21,17 @@
       username: devil
       nopassword: yes
   - jm1.dev_cpp
+  - jm1.dev_embedded
   - jm1.dev_freetz
-  - jm1.dev_hpc
   - jm1.dev_haskell
+  - jm1.dev_hpc
+  - jm1.dev_java
   - jm1.dev_openwrt
   - jm1.dev_prolog
-  - jm1.kdevelop
+  - jm1.dev_python
+  - role: jm1.kdevelop
+    vars:
+      install_from_source: no
 
   post_tasks:
   - file:
