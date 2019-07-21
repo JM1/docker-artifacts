@@ -1,11 +1,17 @@
 ---
 __apt_packages_common:
-  - bison
-  - flex
-  - mesa-utils
-  - qml
+# qt4
+  #- qt4-demos
+  #- qt4-designer
+  - qt4-dev-tools
+  #- qt4-doc
+  - qt4-qmake
+  - qt4-qmlviewer
+  #- qt4-qtconfig
+  #- libqt4-dev
+# qt5
   - qt5-qmake
-#  - qt5-doc
+  #- qt5-doc
   - qtcreator
   - 'libqt5.*-dev'
   - 'qt.*5-dev'
@@ -14,11 +20,10 @@ __apt_packages_common:
   - 'python[0-9]?-pyqt5.[a-zA-Z0-9]*$'
   - 'qt.*5-examples'
   - qt5-image-formats-plugins
-  - heaptrack
-  - heaptrack-gui
+  - qml
+# kde
   - konsole-kpart
   - kde-sc-dev-latest
-  #
   - okteta
   - breeze-icon-theme
   - breeze
@@ -33,14 +38,12 @@ __apt_packages_common:
   - plasma-workspace-wayland
   - python-docutils
   - kde-l10n-de
-#  - qt4-demos
-#  - qt4-designer
-  - qt4-dev-tools
-#  - qt4-doc
-  - qt4-qmake
-  - qt4-qmlviewer
-#  - qt4-qtconfig
-
+# misc
+  - bison
+  - flex
+  - mesa-utils
+  - heaptrack
+  - heaptrack-gui
 
 __apt_packages_build_deps:
   - libkchart-dev
