@@ -62,9 +62,7 @@ __apt_packages:
   - libssl-dev
   - libssl-doc
 # computer vision libraries
-  - libcv-dev
-  - libcv
-  - libhighgui-dev
+  - libopencv-highgui-dev
   - libopencv-dev
 # misc libraries
   - freeglut3-dev
