@@ -18,6 +18,8 @@ __apt_packages_common:
   - 'qt.*5-private-dev'
   - 'qt.*5-dev-tools'
   - 'python[0-9]?-pyqt5.[a-zA-Z0-9]*$'
+  - pyqt5-dev
+  - pyqt5-dev-tools
   - 'qt.*5-examples'
   - qt5-image-formats-plugins
   - qml
