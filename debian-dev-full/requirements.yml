@@ -12,5 +12,4 @@
 - src: jm1.dev_prolog
 - src: jm1.dev_python
 - src: jm1.kdevelop
-- src: jm1.sudo
 - src: jm1.virtual_pkg

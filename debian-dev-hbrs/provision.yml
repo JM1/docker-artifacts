@@ -15,10 +15,6 @@
   roles:
   - jm1.base_system
   - jm1.container_docker
-  - role: jm1.sudo
-    vars:
-      username: devil
-      nopassword: yes
   - jm1.dev_cpp
   - jm1.dev_hpc
   - jm1.kdevelop
