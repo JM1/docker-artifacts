@@ -89,16 +89,38 @@
           (cd kdesrc-build && git pull)
       fi
       
+      anything_changed=no
+      
       # kdev-valgrind is not build here because it does not provide version-targeted branches 
       # for newer releases than 5.1 (highly outdated), which breaks compatibility to older
       # kdevelop/kdevplatform APIs once kdev-valgrind is updated, e.g. commit 3435f36 no
       # longer compiles with kdevplatform 5.3 and thus requires an update of kdevelop.
+      
       for module in clazy kdevelop-pg-qt kdevelop kdev-php kdev-python; do
+          if [ -f "build/$module/install_manifest.txt" ] &&
+              cat "build/$module/install_manifest.txt" | xargs -i test -e '{}'; then
+              echo "Skipping already installed $module.."
+              continue
+          fi
+          anything_changed=yes
           sudo -u nobody HOME="$HOME" kdesrc-build --debug --no-install "$module"
           (cd build/$module && ninja install)
       done
+      
+      if [ "$anything_changed" = "no" ]; then
+          echo "KDevelop is already installed. Skipping.." >&2
+          exit 124
+      fi
     environment:
       HOME: /usr/local/src/kdesrc/
+    register: install_result
+    changed_when:
+      not (install_result.rc == 124 and install_result.stderr == "KDevelop is already installed. Skipping..")
+    failed_when:
+      not (
+        (install_result.rc == 0) or
+        (install_result.rc == 124 and install_result.stderr == "KDevelop is already installed. Skipping..")
+      )
 
 - set_fact:
     apt_packages_common: !!null
@@ -106,3 +128,4 @@
     apt_packages_kdevelop: !!null
     install_prefix: !!null
     install_from_source: !!null
+    install_result: !!null
