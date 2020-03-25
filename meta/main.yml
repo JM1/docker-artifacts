@@ -20,3 +20,4 @@ galaxy_info:
 dependencies:
 - jm1.base_system
 - jm1.virtual_pkg
+- jm1.systemd
