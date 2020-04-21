@@ -8,10 +8,10 @@ include ../.config/docker.mk
 
 .DEFAULT_GOAL := all
 
-.PHONY: all $(DOCKER_MK_PHONY)
-
 .NOTPARALLEL: # respect dependencies among targets
 
 all: docker-build
+.PHONY: all
 
 clean: ;
+.PHONY: clean

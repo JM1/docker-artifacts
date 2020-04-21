@@ -1,8 +1,6 @@
 # vim:set syntax=make:
 # kate: syntax Makefile; tab-indents on; replace-tabs off;
 
-DOCKER_MK_PHONY = docker-build docker-pull docker-push
-
 docker-build:
 	repository="$(DOCKER_REPOSITORY)";                             \
 	[ -z "$$repository" ] && exit 1;                               \
@@ -21,7 +19,8 @@ docker-build:
 	    --no-cache=$$no_cache                                      \
 	    -t "$$repository:$$tag-$$(date +%Y%m%d)"                   \
 	    -t "$$repository:$$tag"                                    \
-	    .;                                                         \
+	    .;
+.PHONY: docker-build
 
 docker-pull:
 	repository="$(DOCKER_REPOSITORY)";                             \
@@ -31,6 +30,7 @@ docker-pull:
 	[ -z "$$tag" ] && tag="latest";                                \
 	                                                               \
 	docker pull "$$repository:$$tag"
+.PHONY: docker-pull
 
 docker-push:
 	repository="$(DOCKER_REPOSITORY)";                             \
@@ -40,3 +40,4 @@ docker-push:
 	[ -z "$$tag" ] && tag="latest";                                \
 	                                                               \
 	docker push "$$repository:$$tag"
+.PHONY: docker-push
