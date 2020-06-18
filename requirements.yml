@@ -1,0 +1,5 @@
+---
+roles:
+- jm1.base_system
+- jm1.common
+- jm1.virtual_pkg
