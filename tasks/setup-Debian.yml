@@ -38,12 +38,12 @@
 - when: install_from_source
   block:
   - copy:
-      src: "{{ distribution_codename }}/usr/local/src/kdesrc/"
+      src: "{{ ansible_distribution }}-{{ ansible_distribution_version }}/usr/local/src/kdesrc/"
       dest: /usr/local/src/kdesrc/
       mode: preserve
   
   - template:
-      src: "{{ distribution_codename }}/usr/local/src/kdesrc/.kdesrc-buildrc.j2"
+      src: "{{ ansible_distribution }}-{{ ansible_distribution_version }}/usr/local/src/kdesrc/.kdesrc-buildrc.j2"
       dest: /usr/local/src/kdesrc/.kdesrc-buildrc
   
   - file:
