@@ -1,4 +1,3 @@
 ---
 roles:
-- jm1.common
 - jm1.virtual_pkg
