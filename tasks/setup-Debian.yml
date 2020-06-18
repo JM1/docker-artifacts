@@ -3,10 +3,6 @@
     apt_packages: "{{ __apt_packages|list }}"
   when: apt_packages|default(None) == None
 
-- name: Cleanup role default variables
-  set_fact:
-    __apt_packages: !!null
-
 - include_role:
     name: jm1.virtual_pkg
   vars:
