@@ -19,14 +19,6 @@
     install_from_source: "{{ __install_from_source }}"
   when: install_from_source|default(None) == None
 
-- name: Cleanup role default variables
-  set_fact:
-    __apt_packages_common: !!null
-    __apt_packages_build_deps: !!null
-    __apt_packages_kdevelop: !!null
-    __install_prefix: !!null
-    __install_from_source: !!null
-
 - when: not install_from_source
   block:
   - include_role:
