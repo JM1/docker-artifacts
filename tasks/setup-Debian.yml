@@ -8,7 +8,7 @@
     __apt_packages: !!null
 
 - copy:
-    src: "{{ distribution_codename }}/"
+    src: "{{ ansible_distribution }}-{{ ansible_distribution_version }}/"
     dest: /
     mode: preserve
 

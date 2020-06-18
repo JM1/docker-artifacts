@@ -18,5 +18,4 @@ galaxy_info:
   - system
 
 dependencies:
-- jm1.common
 - jm1.base_system

@@ -1,5 +1,13 @@
 ---
-- include_vars: "{{ distribution_codename }}.yml"
+- name: Collect distribution facts
+  setup:
+    gather_subset:
+      - min
 
-- import_tasks: setup-Debian.yml
+- name: Load variables specific to Debian and its derivatives, e.g. Debian 10 (Buster)
+  include_vars: '{{ ansible_distribution }}-{{ ansible_distribution_version }}.yml'
+  when: ansible_distribution == 'Debian'
+
+- name: Load tasks specific to OS
+  include_tasks: 'setup-{{ ansible_distribution }}.yml'
   when: ansible_distribution == 'Debian'
