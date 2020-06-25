@@ -1,13 +1,10 @@
 ---
-- set_fact:
-    apt_packages: "{{ __apt_packages|list }}"
-  when: apt_packages|default(None) == None
-
 - include_role:
     name: jm1.virtual_pkg
   vars:
      package_name: "jm1-container-systemd"
-     package_depends: "{{ apt_packages }}"
+     package_depends:
+     - systemd-sysv
 
 # Ansible's systemd module fails with Packer's docker builder:
 #  "System has not been booted with systemd as init system (PID 1). Can't operate.
@@ -42,7 +39,7 @@
   - upower.service
 
 - copy:
-    src: "{{ ansible_distribution }}-{{ ansible_distribution_version }}/"
+    src: "{{ distribution_id|join('-') }}/"
     dest: /
     mode: preserve
 
@@ -51,6 +48,3 @@
   vars:
     name: prepare-container.service
     enabled: yes
-
-- set_fact:
-    apt_packages: !!null
