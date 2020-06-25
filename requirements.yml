@@ -1,4 +1,5 @@
 ---
 roles:
+- jm1.common
 - jm1.dev_cpp
 - jm1.virtual_pkg

@@ -1,41 +1,90 @@
 ---
-- set_fact:
-    apt_packages_common: "{{ __apt_packages_common|list }}"
-  when: apt_packages_common|default(None) == None
+# NOTE:
+# - in Debian Stretch and later libpolarssl-dev has been renamed to libmbedtls-dev
+# - list of packages that will be build by kdesrc-build: libkomparediff2-dev libgrantlee-dev
+# - python-docutils is for rst2html command used by kdevelop for (better) documentation display
+# - Debian Stretch packages libcv-dev, libcvaux-dev and libhighgui-dev have been replaced by libopencv-dev in Debian Sid
+# - transitional package plasma-framework-dev (depends on libkf5plasma-dev) has been removed from sid
+# - libkf5kface-dev depends on libkf5kface10.0.0 which in sid is build against old opencv packages that 
+#   have already been removed from repository. Thus instead of depending on "libkf5.*-dev" we ignore
+#   libkf5kface-dev by use of a posix regular expression.
+# - libnm-glib-dev, libnm-glib-vpn-dev and libnm-util-dev are deprecated since network-manager 1.12.0-4
 
-- set_fact:
-    apt_packages_build_deps: "{{ __apt_packages_build_deps|list }}"
-  when: apt_packages_build_deps|default(None) == None
-
-- set_fact:
-    apt_packages_kdevelop: "{{ __apt_packages_kdevelop|list }}"
-  when: apt_packages_kdevelop|default(None) == None
-
-- set_fact:
-    install_prefix: "{{ __install_prefix }}"
-  when: install_prefix|default(None) == None
-
-- set_fact:
-    install_from_source: "{{ __install_from_source }}"
-  when: install_from_source|default(None) == None
+- include_role:
+    name: jm1.virtual_pkg
+  vars:
+    package_name: "jm1-kdevelop-common"
+    package_depends:
+    # qt4
+    #- qt4-demos
+    #- qt4-designer
+    - qt4-dev-tools
+    #- qt4-doc
+    - qt4-qmake
+    - qt4-qmlviewer
+    #- qt4-qtconfig
+    #- libqt4-dev
+    # qt5
+    - qt5-qmake
+    #- qt5-doc
+    - qtcreator
+    - 'libqt5.*-dev'
+    - 'qt.*5-dev'
+    - 'qt.*5-private-dev'
+    - 'qt.*5-dev-tools'
+    - 'python[0-9]?-pyqt5.[a-zA-Z0-9]*$'
+    - pyqt5-dev
+    - pyqt5-dev-tools
+    - 'qt.*5-examples'
+    - qt5-image-formats-plugins
+    - qml
+    # kde
+    - konsole-kpart
+    - kde-sc-dev-latest
+    - okteta
+    - breeze-icon-theme
+    - breeze
+    - oxygen-icon-theme
+    - plasma-integration
+    - konsole
+    - kate
+    - dolphin
+    - systemsettings
+    - plasma-framework
+    - plasma-sdk
+    - plasma-workspace-wayland
+    - python-docutils
+    - kde-l10n-de
+    # misc
+    - bison
+    - flex
+    - mesa-utils
+    - heaptrack
+    - heaptrack-gui
 
 - when: not install_from_source
   block:
   - include_role:
       name: jm1.virtual_pkg
     vars:
-       package_name: "jm1-kdevelop"
-       package_depends: "{{ apt_packages_common + apt_packages_kdevelop }}"
+      package_name: "jm1-kdevelop"
+      package_depends:
+      - jm1-kdevelop-common
+      - kdevelop
+      - clazy
+      - kdevelop-php
+      - kdevelop-python
+      - plasma-kdevelop
 
 - when: install_from_source
   block:
   - copy:
-      src: "{{ ansible_distribution }}-{{ ansible_distribution_version }}/usr/local/src/kdesrc/"
+      src: "{{ distribution_id|join('-') }}/usr/local/src/kdesrc/"
       dest: /usr/local/src/kdesrc/
       mode: preserve
   
   - template:
-      src: "{{ ansible_distribution }}-{{ ansible_distribution_version }}/usr/local/src/kdesrc/.kdesrc-buildrc.j2"
+      src: "{{ distribution_id|join('-') }}/usr/local/src/kdesrc/.kdesrc-buildrc.j2"
       dest: /usr/local/src/kdesrc/.kdesrc-buildrc
   
   - file:
@@ -48,16 +97,59 @@
   - include_role:
       name: jm1.virtual_pkg
     vars:
-       package_name: "jm1-kdevelop"
-       package_depends: "{{ apt_packages_common + apt_packages_build_deps }}"
-  
+      package_name: "jm1-kdevelop-build-deps"
+      package_depends:
+      - jm1-kdevelop-common
+      - libkchart-dev
+      - libdwarf-dev
+      - libsparsehash-dev
+      - libzstd-dev
+      - libbz2-dev
+      - libxslt-dev
+      - libxml2-dev
+      - libgif-dev
+      - libvlc-dev
+      - libvlccore-dev
+      - libxapian-dev
+      - fontforge
+      - libgcrypt20-dev
+      - libattr1-dev
+      - network-manager-dev
+      - libgtk-3-dev
+      - xsltproc
+      - xserver-xorg-dev
+      - xserver-xorg-input-synaptics-dev
+      - libpwquality-dev
+      - modemmanager-dev
+      - libxcb-keysyms1-dev
+      - libepoxy-dev
+      - libpolkit-agent-1-dev
+      - libegl1-mesa-dev
+      - libxcb-xkb-dev
+      - libwww-perl
+      - libxml-parser-perl
+      - libjson-perl
+      - libgstreamer-plugins-base1.0-dev
+      - libgstreamer1.0-dev
+      - libarchive-dev
+      - liblmdb-dev
+      - libsvn-dev
+      - libnm-dev
+      #- 'libkf5([^k]+|(k([^f]|$)|kf([^a]|$)|kfa([^c]|$)|kfac([^e]|$)))+.*dev' 
+      - 'libkf5.*dev' 
+      - plasma-workspace-dev
+      - okteta-dev
+      - kdoctools-dev
+      - libgrantlee5-dev
+      - libkomparediff2-dev
+
   # # Workarounds
   # [ ! -d ~/.local/share/kservicetypes5/ ] && { 
   #     mkdir -p ~/.local/share/kservicetypes5/ && \
   #     ln -s /usr/share/kservicetypes5/plasma-dataengine.desktop ~/.local/share/kservicetypes5/plasma-dataengine.desktop;
   # }
   # ln -s /usr/share/kf5/ ~/.local/share/kf5
-  
+
   - name: Build KDevelop from source
     # References:
     #  http://kfunk.org/2016/02/16/building-kdevelop-5-from-source-on-ubuntu-15-10/
@@ -123,9 +215,4 @@
       )
 
 - set_fact:
-    apt_packages_common: !!null
-    apt_packages_build_deps: !!null
-    apt_packages_kdevelop: !!null
-    install_prefix: !!null
-    install_from_source: !!null
     install_result: !!null
