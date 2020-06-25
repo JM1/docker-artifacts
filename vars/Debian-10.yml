@@ -1,6 +1,0 @@
----
-__apt_packages:
-  - aspectj
-  - maven
-  - default-jdk
-  - default-jre
