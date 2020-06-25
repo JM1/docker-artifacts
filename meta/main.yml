@@ -17,4 +17,5 @@ galaxy_info:
   - development
   - system
 
-dependencies: []
+dependencies:
+- jm1.common
