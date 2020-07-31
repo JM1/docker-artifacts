@@ -1,9 +1,8 @@
 ---
-- include_role:
-    name: jm1.virtual_pkg
-  vars:
-    package_name: "jm1-dev-openwrt"
-    package_depends:
+- jm1.pkg.meta_pkg:
+    name: "jm1-dev-openwrt"
+    version: "1"
+    depends:
     # OpenWrt / LEDE
     # Using the Image Generator (Image Builder)
     # Ref.: https://lede-project.org/docs/user-guide/imagebuilder
