@@ -1,9 +1,8 @@
 ---
-- include_role:
-    name: jm1.virtual_pkg
-  vars:
-    package_name: "jm1-dev-java"
-    package_depends:
+- jm1.pkg.meta_pkg:
+    name: "jm1-dev-java"
+    version: "1"
+    depends:
     - aspectj
     - maven
     - default-jdk
