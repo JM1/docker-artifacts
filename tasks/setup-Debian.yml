@@ -5,7 +5,7 @@
     depends:
     # OpenWrt / LEDE
     # Using the Image Generator (Image Builder)
-    # Ref.: https://lede-project.org/docs/user-guide/imagebuilder
+    # Ref.: https://openwrt.org/docs/guide-user/additional-software/imagebuilder
     - subversion
     - build-essential
     - libncurses5-dev
