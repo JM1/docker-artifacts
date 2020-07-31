@@ -1,0 +1,16 @@
+---
+- jm1.pkg.meta_pkg:
+    name: "jm1-dev-python"
+    version: "1"
+    depends:
+    - cython3
+    - ipython3
+    - pep8
+    - pypy
+    - pypy-doc
+    - pyqt5-dev
+    - pyqt5-dev-tools
+    - pyqt5-examples
+    - python3-pip
+    - python3-virtualenv
+    - swig3.0
