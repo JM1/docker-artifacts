@@ -1,9 +1,8 @@
 ---
-- include_role:
-    name: jm1.virtual_pkg
-  vars:
-    package_name: "jm1-dev-haskell"
-    package_depends:
+- jm1.pkg.meta_pkg:
+    name: "jm1-dev-haskell"
+    version: "1"
+    depends:
     - haskell-platform
 
     # TODO: re-add package ghc-mod as soon as it supports GHC 8.2.1+
