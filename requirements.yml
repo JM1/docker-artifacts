@@ -1,5 +1,8 @@
 ---
 roles:
 - jm1.common
+- jm1.base_system # required e.g. by jm1.dev_cpp
 - jm1.dev_cpp
-- jm1.virtual_pkg
+
+collections:
+- jm1.pkg

@@ -10,11 +10,10 @@
 #   libkf5kface-dev by use of a posix regular expression.
 # - libnm-glib-dev, libnm-glib-vpn-dev and libnm-util-dev are deprecated since network-manager 1.12.0-4
 
-- include_role:
-    name: jm1.virtual_pkg
-  vars:
-    package_name: "jm1-kdevelop-common"
-    package_depends:
+- jm1.pkg.meta_pkg:
+    name: "jm1-kdevelop-common"
+    version: "1"
+    depends:
     # qt4
     #- qt4-demos
     #- qt4-designer
@@ -64,11 +63,10 @@
 
 - when: not install_from_source
   block:
-  - include_role:
-      name: jm1.virtual_pkg
-    vars:
-      package_name: "jm1-kdevelop"
-      package_depends:
+  - jm1.pkg.meta_pkg:
+      name: "jm1-kdevelop"
+      version: "1"
+      depends:
       - jm1-kdevelop-common
       - kdevelop
       - clazy
@@ -94,11 +92,10 @@
       mode: "a+rx"
       recurse: yes
   
-  - include_role:
-      name: jm1.virtual_pkg
-    vars:
-      package_name: "jm1-kdevelop-build-deps"
-      package_depends:
+  - jm1.pkg.meta_pkg:
+      name: "jm1-kdevelop-build-deps"
+      version: "1"
+      depends:
       - jm1-kdevelop-common
       - libkchart-dev
       - libdwarf-dev
