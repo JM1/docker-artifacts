@@ -2,4 +2,6 @@
 roles:
 - jm1.common
 - jm1.base_system
-- jm1.virtual_pkg
+
+collections:
+- jm1.pkg

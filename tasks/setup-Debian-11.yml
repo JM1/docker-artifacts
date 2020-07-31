@@ -4,31 +4,30 @@
     dest: /
     mode: preserve
 
-- include_role:
-    name: jm1.virtual_pkg
-  vars:
-    package_name: "jm1-dev-cpp"
-    package_depends:
+- jm1.pkg.meta_pkg:
+    name: "jm1-dev-cpp"
+    version: "1"
+    depends:
     # gcc
     - gcc
     - g++
     - gdb
-    - gcc-7
-    - g++-7
-    - gcc-8
-    - g++-8
+    - gcc-9
+    - g++-9
+    - gcc-10
+    - g++-10
     # clang
     - clang
-    - clang-6.0
-    - clang-7
+    - clang-9
+    - clang-10
     - llvm
-    #  - lldb-6.0
-    - lldb-7
+    #  - lldb-9
+    - lldb-10
     - libclang-dev
-    - libclang-6.0-dev
-    - libclang-7-dev
-    - clang-tools-7
-    - clang-tidy-7
+    - libclang-9-dev
+    - libclang-10-dev
+    - clang-tools-10
+    - clang-tidy-10
     # vcs
     - bzr
     - mercurial
