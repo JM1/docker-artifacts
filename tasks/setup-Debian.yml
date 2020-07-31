@@ -1,10 +1,9 @@
 ---
-- include_role:
-    name: jm1.virtual_pkg
-  vars:
-     package_name: "jm1-container-systemd"
-     package_depends:
-     - systemd-sysv
+- jm1.pkg.meta_pkg:
+    name: "jm1-container-systemd"
+    version: "1"
+    depends:
+    - systemd-sysv
 
 # Ansible's systemd module fails with Packer's docker builder:
 #  "System has not been booted with systemd as init system (PID 1). Can't operate.
