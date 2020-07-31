@@ -1,9 +1,8 @@
 ---
-- include_role:
-    name: jm1.virtual_pkg
-  vars:
-    package_name: "jm1-dev-python"
-    package_depends:
+- jm1.pkg.meta_pkg:
+    name: "jm1-dev-python"
+    version: "1"
+    depends:
     - cython
     - cython3
     - ipython3
