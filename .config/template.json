@@ -1,5 +1,5 @@
 {
-    "_copyright": "Copyright (c) 2019 Jakob Meng, <jakobmeng@web.de>",
+    "_copyright": "Copyright (c) 2019-2020 Jakob Meng, <jakobmeng@web.de>",
 
     "variables": {
         "docker_image": "debian",
@@ -10,7 +10,10 @@
 
         "ansible_user": "root",
         "ansible_host": "{{timestamp}}{{uuid}}",
-        "ansible_connection": "docker"
+        "ansible_connection": "docker",
+        "ansible_python_interpreter": "/usr/bin/python",
+
+        "packages": "python"
     },
 
     "builders": [{
@@ -26,8 +29,10 @@
         "type": "shell",
         "environment_vars": ["DEBIAN_FRONTEND=noninteractive"],
         "inline": [
-            "[ ! -e /var/cache/apt/pkgcache.bin ] || [ -z \"$(find /var/cache/apt/pkgcache.bin -mmin -60)\" ] && apt-get update",
-            "apt-get install -y python"
+            "set -x",
+            "[ ! -e /var/cache/apt/pkgcache.bin ] || [ -z \"$(find /var/cache/apt/pkgcache.bin -mmin -1440)\" ] && apt-get update",
+            "apt-get upgrade -y && apt-get dist-upgrade -y && apt-get autoremove -y",
+            "apt-get install -y {{user `packages`}}"
         ]
     },{
         "type": "ansible",
@@ -35,7 +40,7 @@
         "extra_arguments": [
             "-vvv",
             "--extra-vars",
-            "ansible_user={{user `ansible_user`}} ansible_host={{user `ansible_host`}} ansible_connection={{user `ansible_connection`}}"
+            "ansible_user={{user `ansible_user`}} ansible_host={{user `ansible_host`}} ansible_connection={{user `ansible_connection`}} ansible_python_interpreter={{user `ansible_python_interpreter`}}"
         ]
     }],
 
