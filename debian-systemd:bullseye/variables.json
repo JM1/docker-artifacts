@@ -1,0 +1,8 @@
+{
+    "ansible_python_interpreter": "/usr/bin/python3",
+    "docker_image": "jm1337/debian:bullseye",
+    "docker_repository": "jm1337/debian-systemd-core",
+    "docker_tag": "bullseye",
+    "docker_pull": "false",
+    "packages": "python3"
+}
