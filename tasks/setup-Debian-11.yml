@@ -9,20 +9,12 @@
 #   have already been removed from repository. Thus instead of depending on "libkf5.*-dev" we ignore
 #   libkf5kface-dev by use of a posix regular expression.
 # - libnm-glib-dev, libnm-glib-vpn-dev and libnm-util-dev are deprecated since network-manager 1.12.0-4
+# - Qt4, kde-l10n-de and kde-sc-dev-latest are not available in Debian 11 (Bullseye) and later
 
 - jm1.pkg.meta_pkg:
     name: "jm1-kdevelop-common"
     version: "1"
     depends:
-    # qt4
-    #- qt4-demos
-    #- qt4-designer
-    - qt4-dev-tools
-    #- qt4-doc
-    - qt4-qmake
-    - qt4-qmlviewer
-    #- qt4-qtconfig
-    #- libqt4-dev
     # qt5
     - qt5-qmake
     #- qt5-doc
@@ -37,9 +29,11 @@
     - 'qt.*5-examples'
     - qt5-image-formats-plugins
     - qml
+    #
+    #
+    #
     # kde
     - konsole-kpart
-    - kde-sc-dev-latest
     - okteta
     - breeze-icon-theme
     - breeze
@@ -52,8 +46,10 @@
     - plasma-framework
     - plasma-sdk
     - plasma-workspace-wayland
-    - python-docutils
-    - kde-l10n-de
+    - python3-docutils
+    #
+    #
+    #
     # misc
     - bison
     - flex
@@ -77,21 +73,21 @@
 - when: install_from_source
   block:
   - copy:
-      src: "{{ distribution_id|join('-') }}/usr/local/src/kdesrc/"
-      dest: /usr/local/src/kdesrc/
+      src: "{{ distribution_id|join('-') }}/"
+      dest: /
       mode: preserve
-  
+
   - template:
       src: "{{ distribution_id|join('-') }}/usr/local/src/kdesrc/.kdesrc-buildrc.j2"
       dest: /usr/local/src/kdesrc/.kdesrc-buildrc
-  
+
   - file:
       path: /usr/local/src/kdesrc/
       owner: nobody
       state: directory
       mode: "a+rx"
       recurse: yes
-  
+
   - jm1.pkg.meta_pkg:
       name: "jm1-kdevelop-build-deps"
       version: "1"
@@ -132,74 +128,16 @@
       - liblmdb-dev
       - libsvn-dev
       - libnm-dev
-      #- 'libkf5([^k]+|(k([^f]|$)|kf([^a]|$)|kfa([^c]|$)|kfac([^e]|$)))+.*dev' 
-      - 'libkf5.*dev' 
+      #- 'libkf5([^k]+|(k([^f]|$)|kf([^a]|$)|kfa([^c]|$)|kfac([^e]|$)))+.*dev'
+      - 'libkf5.*dev'
       - plasma-workspace-dev
       - okteta-dev
       - kdoctools-dev
       - libgrantlee5-dev
       - libkomparediff2-dev
 
-  # # Workarounds
-  # [ ! -d ~/.local/share/kservicetypes5/ ] && { 
-  #     mkdir -p ~/.local/share/kservicetypes5/ && \
-  #     ln -s /usr/share/kservicetypes5/plasma-dataengine.desktop ~/.local/share/kservicetypes5/plasma-dataengine.desktop;
-  # }
-  # ln -s /usr/share/kf5/ ~/.local/share/kf5
-
   - name: Build KDevelop from source
-    # References:
-    #  http://kfunk.org/2016/02/16/building-kdevelop-5-from-source-on-ubuntu-15-10/
-    #  https://community.kde.org/Guidelines_and_HOWTOs/Build_from_source
-    shell: |
-      set -e
-      cd /usr/local/src/kdesrc/
-      
-      # kdesrc-build must be able to find system-provided kde files or else kdevelop build fails with errors like:
-      #  FAILED: app/plasma/dataengine/plasma-dataengine-kdevelopsessions.json 
-      #  cd /usr/local/src/kdesrc/kdevelop/app/plasma/dataengine && /usr/bin/desktoptojson -i plasma-dataengine-kdevelopsessions.desktop -o /usr/local/src/kdesrc/build/kdevelop/app/plasma/dataengine/plasma-dataengine-kdevelopsessions.json -s plasma-dataengine.desktop
-      #  Warning: Could not locate service type file kservicetypes5/plasma-dataengine.desktop, tried ("/usr/local/src/kdesrc/.local/share", "/usr/local/share") and ":/kservicetypes5/plasma-dataengine.desktop" ((null):0, (null))
-      #  About to parse service type file "plasma-dataengine.desktop"
-      #
-      # NOTE: Another reason for this error message might be issue #208, which
-      #       is solved since Docker 18.04 and libseccomp-2.3.3 [1][2].
-      #       Ref.:
-      #        [1] https://github.com/docker/for-linux/issues/208
-      #        [2] https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=901062
-      if [ ! -e .local ]; then
-          mkdir .local
-          ln -s /usr/share .local/share
-      fi
-      
-      if [ ! -e kdesrc-build ]; then
-          git clone --depth 1 kde:kdesrc-build
-          ln -s /usr/local/src/kdesrc/kdesrc-build/kdesrc-build /usr/local/bin/
-      else
-          (cd kdesrc-build && git pull)
-      fi
-      
-      anything_changed=no
-      
-      # kdev-valgrind is not build here because it does not provide version-targeted branches 
-      # for newer releases than 5.1 (highly outdated), which breaks compatibility to older
-      # kdevelop/kdevplatform APIs once kdev-valgrind is updated, e.g. commit 3435f36 no
-      # longer compiles with kdevplatform 5.3 and thus requires an update of kdevelop.
-      
-      for module in clazy kdevelop-pg-qt kdevelop kdev-php kdev-python; do
-          if [ -f "build/$module/install_manifest.txt" ] &&
-              cat "build/$module/install_manifest.txt" | xargs -i test -e '{}'; then
-              echo "Skipping already installed $module.."
-              continue
-          fi
-          anything_changed=yes
-          sudo -u nobody HOME="$HOME" kdesrc-build --debug --no-install "$module"
-          (cd build/$module && ninja install)
-      done
-      
-      if [ "$anything_changed" = "no" ]; then
-          echo "KDevelop is already installed. Skipping.." >&2
-          exit 124
-      fi
+    shell: /usr/local/bin/make_install_kdevelop.sh
     environment:
       HOME: /usr/local/src/kdesrc/
     register: install_result

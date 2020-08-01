@@ -1,0 +1,166 @@
+---
+# NOTE:
+# - in Debian Stretch and later libpolarssl-dev has been renamed to libmbedtls-dev
+# - list of packages that will be build by kdesrc-build: libkomparediff2-dev libgrantlee-dev
+# - python-docutils is for rst2html command used by kdevelop for (better) documentation display
+# - Debian Stretch packages libcv-dev, libcvaux-dev and libhighgui-dev have been replaced by libopencv-dev in Debian Sid
+# - transitional package plasma-framework-dev (depends on libkf5plasma-dev) has been removed from sid
+# - libkf5kface-dev depends on libkf5kface10.0.0 which in sid is build against old opencv packages that 
+#   have already been removed from repository. Thus instead of depending on "libkf5.*-dev" we ignore
+#   libkf5kface-dev by use of a posix regular expression.
+# - libnm-glib-dev, libnm-glib-vpn-dev and libnm-util-dev are deprecated since network-manager 1.12.0-4
+
+- jm1.pkg.meta_pkg:
+    name: "jm1-kdevelop-common"
+    version: "1"
+    depends:
+    # qt4
+    #- qt4-demos
+    #- qt4-designer
+    - qt4-dev-tools
+    #- qt4-doc
+    - qt4-qmake
+    - qt4-qmlviewer
+    #- qt4-qtconfig
+    #- libqt4-dev
+    #
+    #
+    #
+    # qt5
+    - qt5-qmake
+    #- qt5-doc
+    - qtcreator
+    - 'libqt5.*-dev'
+    - 'qt.*5-dev'
+    - 'qt.*5-private-dev'
+    - 'qt.*5-dev-tools'
+    - 'python[0-9]?-pyqt5.[a-zA-Z0-9]*$'
+    - pyqt5-dev
+    - pyqt5-dev-tools
+    - 'qt.*5-examples'
+    - qt5-image-formats-plugins
+    - qml
+    #
+    #
+    #
+    # kde
+    - konsole-kpart
+    - okteta
+    - breeze-icon-theme
+    - breeze
+    - oxygen-icon-theme
+    - plasma-integration
+    - konsole
+    - kate
+    - dolphin
+    - systemsettings
+    - plasma-framework
+    - plasma-sdk
+    - plasma-workspace-wayland
+    - python-docutils
+    - kde-l10n-de
+    - kde-sc-dev-latest
+    #
+    #
+    #
+    # misc
+    - bison
+    - flex
+    - mesa-utils
+    - heaptrack
+    - heaptrack-gui
+
+- when: not install_from_source
+  block:
+  - jm1.pkg.meta_pkg:
+      name: "jm1-kdevelop"
+      version: "1"
+      depends:
+      - jm1-kdevelop-common
+      - kdevelop
+      - clazy
+      - kdevelop-php
+      - kdevelop-python
+      - plasma-kdevelop
+
+- when: install_from_source
+  block:
+  - copy:
+      src: "{{ distribution_id|join('-') }}/"
+      dest: /
+      mode: preserve
+
+  - template:
+      src: "{{ distribution_id|join('-') }}/usr/local/src/kdesrc/.kdesrc-buildrc.j2"
+      dest: /usr/local/src/kdesrc/.kdesrc-buildrc
+
+  - file:
+      path: /usr/local/src/kdesrc/
+      owner: nobody
+      state: directory
+      mode: "a+rx"
+      recurse: yes
+
+  - jm1.pkg.meta_pkg:
+      name: "jm1-kdevelop-build-deps"
+      version: "1"
+      depends:
+      - jm1-kdevelop-common
+      - libkchart-dev
+      - libdwarf-dev
+      - libsparsehash-dev
+      - libzstd-dev
+      - libbz2-dev
+      - libxslt-dev
+      - libxml2-dev
+      - libgif-dev
+      - libvlc-dev
+      - libvlccore-dev
+      - libxapian-dev
+      - fontforge
+      - libgcrypt20-dev
+      - libattr1-dev
+      - network-manager-dev
+      - libgtk-3-dev
+      - xsltproc
+      - xserver-xorg-dev
+      - xserver-xorg-input-synaptics-dev
+      - libpwquality-dev
+      - modemmanager-dev
+      - libxcb-keysyms1-dev
+      - libepoxy-dev
+      - libpolkit-agent-1-dev
+      - libegl1-mesa-dev
+      - libxcb-xkb-dev
+      - libwww-perl
+      - libxml-parser-perl
+      - libjson-perl
+      - libgstreamer-plugins-base1.0-dev
+      - libgstreamer1.0-dev
+      - libarchive-dev
+      - liblmdb-dev
+      - libsvn-dev
+      - libnm-dev
+      #- 'libkf5([^k]+|(k([^f]|$)|kf([^a]|$)|kfa([^c]|$)|kfac([^e]|$)))+.*dev'
+      - 'libkf5.*dev'
+      - plasma-workspace-dev
+      - okteta-dev
+      - kdoctools-dev
+      - libgrantlee5-dev
+      - libkomparediff2-dev
+
+  - name: Build KDevelop from source
+    shell: /usr/local/bin/make_install_kdevelop.sh
+    environment:
+      HOME: /usr/local/src/kdesrc/
+    register: install_result
+    changed_when:
+      not (install_result.rc == 124 and install_result.stderr == "KDevelop is already installed. Skipping..")
+    failed_when:
+      not (
+        (install_result.rc == 0) or
+        (install_result.rc == 124 and install_result.stderr == "KDevelop is already installed. Skipping..")
+      )
+
+- set_fact:
+    install_result: !!null
