@@ -1,3 +1,8 @@
 ---
+roles:
+- src: jm1.common
 - src: jm1.base_system
 - src: jm1.container_docker
+
+collections:
+- jm1.pkg # e.g. required by jm1.base_system
