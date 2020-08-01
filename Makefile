@@ -4,8 +4,15 @@
 TOPTARGETS := all clean docker-push docker-pull
 
 # sorted by build dependencies
-SUBDIRS := debian debian-dev-hpc debian-systemd \
-	debian-dev-full debian-dev-hbrs debian-gltest debian-distcc jupyter-prolog-notebook debian-tex
+SUBDIRS := debian:buster \
+	debian-dev-hpc:buster \
+	debian-dev-full:buster \
+	debian-dev-hbrs:buster \
+	debian-systemd:buster \
+	debian-gltest:buster \
+	debian-distcc:buster \
+	jupyter-prolog-notebook \
+	debian-tex:buster
 
 $(TOPTARGETS): $(SUBDIRS)
 
