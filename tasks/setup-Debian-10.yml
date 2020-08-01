@@ -34,6 +34,9 @@
     - git
     - subversion
     - myrepos
+    # editors
+    - vim-nox
+    - emacs-nox
     # tools
     - ccache
     - ninja-build
