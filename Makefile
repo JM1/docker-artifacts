@@ -17,7 +17,7 @@ SUBDIRS := debian\:buster debian\:bullseye \
 $(TOPTARGETS): $(SUBDIRS)
 
 $(SUBDIRS):
-	$(MAKE) -C $@ $(MAKECMDGOALS)
+	$(MAKE) -C $@
 
 .NOTPARALLEL: # respect dependencies between docker images
 
