@@ -8,6 +8,9 @@
     name: "jm1-dev-cpp"
     version: "1"
     depends:
+    # shell
+    - bash
+    - fzf
     # gcc
     - gcc
     - g++
