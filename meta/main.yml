@@ -18,7 +18,4 @@ galaxy_info:
   - development
   - system
 
-dependencies:
-- jm1.common
-- jm1.dev_cpp
-- jm1.pkg.setup
+dependencies: []
