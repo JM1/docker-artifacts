@@ -14,7 +14,10 @@ SUBDIRS := debian\:buster debian\:bullseye \
 	jupyter-prolog-notebook \
 	debian-tex\:buster
 
-$(TOPTARGETS): $(SUBDIRS)
+$(TOPTARGETS):
+	@for SUBDIR in $(SUBDIRS); do \
+		$(MAKE) -C $$SUBDIR $@ || break; \
+	done
 
 $(SUBDIRS):
 	$(MAKE) -C $@
