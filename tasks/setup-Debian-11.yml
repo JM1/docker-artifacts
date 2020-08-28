@@ -5,7 +5,7 @@
     depends:
     - cython3
     - ipython3
-    - pep8
+    - pycodestyle # formerly called pep8
     - pypy
     - pypy-doc
     - pyqt5-dev
@@ -13,4 +13,4 @@
     - pyqt5-examples
     - python3-pip
     - python3-virtualenv
-    - swig3.0
+    - swig
