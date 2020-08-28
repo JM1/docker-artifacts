@@ -8,32 +8,6 @@
   - jm1.dev_hpc
 
   post_tasks:
-
-  - name: Install ParaView packages with (inofficial) patches for bug 959387, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=959387
-    block:
-    - name: Install dependencies for 'deb' parameter of Ansible's apt module
-      apt:
-        name: xz-utils
-
-    - name: Remove paraview packages to prevent broken package dependencies
-      apt:
-        name:
-        - paraview-dev
-        - python3-paraview
-        state: absent
-
-    - name: Fetch and install fixed paraview package
-      apt:
-        deb: https://berrendorf.inf.h-brs.de/~jmeng2m/debian-package-paraview/paraview_5.7.0+ds.1-2_amd64.deb
-
-    - name: Fetch and install fixed paraview-dev package
-      apt:
-        deb: https://berrendorf.inf.h-brs.de/~jmeng2m/debian-package-paraview/paraview-dev_5.7.0+ds.1-2_amd64.deb
-
-    - name: Fetch and install fixed python3-paraview package
-      apt:
-        deb: https://berrendorf.inf.h-brs.de/~jmeng2m/debian-package-paraview/python3-paraview_5.7.0+ds.1-2_amd64.deb
-
   - # Clean up the apt cache reduces the image size, since the apt cache is not stored in a layer.
     # Ref.: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
     shell: rm -rf /var/lib/apt/lists/*
