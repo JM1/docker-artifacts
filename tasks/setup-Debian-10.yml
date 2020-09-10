@@ -6,6 +6,7 @@
     - cython
     - cython3
     - ipython3
+    - flake8
     - pycodestyle # formerly called pep8
     - pypy
     - pypy-doc
@@ -14,5 +15,7 @@
     - pyqt5-examples
     - python-pip
     - python3-pip
+    - python-pytest
+    - python3-pytest
     - swig
     - virtualenv
