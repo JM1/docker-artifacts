@@ -61,6 +61,9 @@
     - icu-devtools
     - bison
     - flex
+    - catch
+    - catch2
+    - shellcheck
     # packaging
     - quilt
     - packaging-dev
