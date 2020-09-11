@@ -12,7 +12,7 @@
 - include_role:
     name: jm1.systemd
   vars:
-    name: item
+    name: '{{ item }}'
     masked: yes
   loop:
   - keyboard-setup.service
@@ -26,7 +26,7 @@
 - include_role:
     name: jm1.systemd
   vars:
-    name: item
+    name: '{{ item }}'
     masked: yes
   loop:
   - NetworkManager.service
