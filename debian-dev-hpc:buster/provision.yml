@@ -6,6 +6,7 @@
   - jm1.container_docker
   - jm1.dev_cpp
   - jm1.dev_hpc
+  - jm1.dev_python
 
   post_tasks:
   - # Clean up the apt cache reduces the image size, since the apt cache is not stored in a layer.

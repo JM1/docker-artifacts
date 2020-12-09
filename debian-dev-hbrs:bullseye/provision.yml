@@ -17,6 +17,7 @@
   - jm1.container_docker
   - jm1.dev_cpp
   - jm1.dev_hpc
+  - jm1.dev_python
   - jm1.kdevelop
 
   post_tasks:
