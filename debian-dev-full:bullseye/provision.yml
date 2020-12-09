@@ -6,7 +6,6 @@
       name: devil
       password: ""
       groups:
-      - audio
       - video
       system: no
       uid: 1000
