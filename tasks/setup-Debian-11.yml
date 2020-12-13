@@ -16,3 +16,5 @@
     - python3-virtualenv
     - python3-pytest
     - swig
+    suggests:
+    - pipx
