@@ -42,6 +42,7 @@
     - emacs-nox
     # tools
     - ccache
+    - clangd
     - ninja-build
     - cloc
     - cppcheck
