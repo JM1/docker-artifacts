@@ -6,6 +6,7 @@
     - cython3
     - ipython3
     - flake8
+    - pipenv
     - pycodestyle # formerly called pep8
     - pypy
     - pypy-doc
