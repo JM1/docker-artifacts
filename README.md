@@ -12,7 +12,7 @@ git clone --depth 1 https://github.com/JM1/docker-artifacts.git
 make docker-pull
 
 # build only e.g. jm1337/debian:buster
-(cd debian && make docker-pull)
+(cd debian\:buster && make docker-pull)
 ```
 
 ## How to build images locally
@@ -27,7 +27,7 @@ git clone --depth 1 https://github.com/JM1/docker-artifacts.git
 make
 
 # build only e.g. jm1337/debian:buster
-(cd debian && make)
+(cd debian\:buster && make)
 ```
 
 ## How to push images to Docker Hub
@@ -43,5 +43,5 @@ make
 make docker-push
 
 # push only e.g. debian:buster
-(cd debian && make docker-push)
+(cd debian\:buster && make docker-push)
 ```
