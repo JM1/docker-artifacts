@@ -1,4 +1,9 @@
 ---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400 # 1 day
+
 - jm1.pkg.meta_pkg:
     name: "jm1-dev-embedded"
     version: "1"
