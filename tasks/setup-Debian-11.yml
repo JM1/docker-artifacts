@@ -3,6 +3,10 @@
     src: "{{ distribution_id|join('-') }}/"
     dest: /
     mode: preserve
+  notify: Update apt cache
+
+- name: Update apt cache before installing packages
+  meta: flush_handlers
 
 - jm1.pkg.meta_pkg:
     name: "jm1-dev-cpp"
