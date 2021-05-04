@@ -1,4 +1,9 @@
 ---
+- name: Update apt cache
+  apt:
+    update_cache: yes
+    cache_valid_time: 86400 # 1 day
+
 # NOTE:
 # - in Debian Stretch and later libpolarssl-dev has been renamed to libmbedtls-dev
 # - list of packages that will be build by kdesrc-build: libkomparediff2-dev libgrantlee-dev
