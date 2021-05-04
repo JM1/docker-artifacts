@@ -65,6 +65,7 @@
     - catch
     - catch2
     - shellcheck
+    - rr
     # packaging
     - quilt
     - packaging-dev

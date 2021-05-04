@@ -64,6 +64,7 @@
     - flex
     - catch
     - shellcheck
+    - rr
     # packaging
     - quilt
     - packaging-dev
