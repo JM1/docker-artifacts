@@ -24,14 +24,128 @@
     - qt5-qmake
     #- qt5-doc
     - qtcreator
-    - 'libqt5.*-dev'
-    - 'qt.*5-dev'
-    - 'qt.*5-private-dev'
-    - 'qt.*5-dev-tools'
-    - 'python[0-9]?-pyqt5.[a-zA-Z0-9]*$'
+    #
+    # aptitude search '^libqt5.*-dev$' -F "%p"
+    - libqt5-ukui-style-dev
+    - libqt5charts5-dev
+    - libqt5datavisualization5-dev
+    - libqt5gamepad5-dev
+    - libqt5gstreamer-dev
+    - libqt5networkauth5-dev
+    - libqt5opengl5-desktop-dev
+    - libqt5opengl5-dev
+    - libqt5pas-dev
+    - libqt5remoteobjects5-dev
+    - libqt5scintilla2-dev
+    - libqt5scxml5-dev
+    - libqt5scxml5-private-dev
+    - libqt5sensors5-dev
+    - libqt5serialbus5-dev
+    - libqt5serialport5-dev
+    - libqt5svg5-dev
+    - libqt5texttospeech5-dev
+    - libqt5virtualkeyboard5-dev
+    - libqt5waylandclient5-dev
+    - libqt5waylandcompositor5-dev
+    - libqt5webchannel5-dev
+    - libqt5webkit5-dev
+    - libqt5websockets5-dev
+    - libqt5webview5-dev
+    - libqt5x11extras5-dev
+    - libqt5xdg-dev
+    - libqt5xdgiconloader-dev
+    - libqt5xmlpatterns5-dev
+    # aptitude search '^qt.*5-dev$' -F "%p"
+    - qt3d5-dev
+    - qtbase5-dev
+    - qtconnectivity5-dev
+    - qtdeclarative5-dev
+    - qtfeedback5-dev
+    - qtlocation5-dev
+    - qtmultimedia5-dev
+    - qtpdf5-dev
+    - qtpim5-dev
+    - qtpositioning5-dev
+    - qtquickcontrols2-5-dev
+    - qtscript5-dev
+    - qtsystems5-dev
+    - qttools5-dev
+    - qtwebengine5-dev
+    # aptitude search '^qt.*5-private-dev$' -F "%p"
+    - qtbase5-private-dev
+    - qtdeclarative5-private-dev
+    - qtsystems5-private-dev
+    - qttools5-private-dev
+    - qtwayland5-private-dev
+    - qtwebengine5-private-dev
+    # aptitude search '^qt.*5-dev-tools$' -F "%p"
+    - qt3d5-dev-tools
+    - qtbase5-dev-tools
+    - qtdeclarative5-dev-tools
+    - qttools5-dev-tools
+    - qtwayland5-dev-tools
+    - qtwebengine5-dev-tools
+    - qtxmlpatterns5-dev-tools
+    # aptitude search '^python[0-9]?-pyqt5.[a-zA-Z0-9]*$' -F "%p"
+    - python3-pyqt5.qsci
+    - python3-pyqt5.qtbluetooth
+    - python3-pyqt5.qtchart
+    - python3-pyqt5.qtmultimedia
+    - python3-pyqt5.qtnetworkauth
+    - python3-pyqt5.qtnfc
+    - python3-pyqt5.qtopengl
+    - python3-pyqt5.qtpositioning
+    - python3-pyqt5.qtquick
+    - python3-pyqt5.qtremoteobjects
+    - python3-pyqt5.qtsensors
+    - python3-pyqt5.qtserialport
+    - python3-pyqt5.qtsql
+    - python3-pyqt5.qtsvg
+    - python3-pyqt5.qttexttospeech
+    - python3-pyqt5.qtwebchannel
+    - python3-pyqt5.qtwebengine
+    - python3-pyqt5.qtwebkit
+    - python3-pyqt5.qtwebsockets
+    - python3-pyqt5.qtx11extras
+    - python3-pyqt5.qtxmlpatterns
+    - python3-pyqt5.qwt
+    - python3-pyqt5.sip
+    #
     - pyqt5-dev
     - pyqt5-dev-tools
-    - 'qt.*5-examples'
+    # aptitude search '^qt.*5-examples$' -F "%p"
+    - qt3d5-examples
+    - qtbase5-examples
+    - qtcharts5-examples
+    - qtconnectivity5-examples
+    - qtdatavisualization5-examples
+    - qtdeclarative5-examples
+    - qtfeedback5-examples
+    - qtgamepad5-examples
+    - qtlocation5-examples
+    - qtmultimedia5-examples
+    - qtnetworkauth5-examples
+    - qtpdf5-examples
+    - qtpim5-examples
+    - qtquickcontrols2-5-examples
+    - qtquickcontrols5-examples
+    - qtremoteobjects5-examples
+    - qtscript5-examples
+    - qtscxml5-examples
+    - qtsensors5-examples
+    - qtserialbus5-examples
+    - qtspeech5-examples
+    - qtsvg5-examples
+    - qtsystems5-examples
+    - qttools5-examples
+    - qtvirtualkeyboard5-examples
+    - qtwayland5-examples
+    - qtwebchannel5-examples
+    - qtwebengine5-examples
+    - qtwebsockets5-examples
+    - qtwebview5-examples
+    - qtxmlpatterns5-examples
+    #
     - qt5-image-formats-plugins
     - qml
     #
