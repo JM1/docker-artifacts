@@ -14,7 +14,6 @@ roles:
 - src: jm1.dev_prolog
 - src: jm1.dev_python
 - src: jm1.kdevelop
-- src: jm1.systemd # e.g. required by jm1.container_systemd
 
 collections:
 - jm1.pkg # e.g. required by jm1.base_system
