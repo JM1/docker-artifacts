@@ -14,11 +14,7 @@
 #  "System has not been booted with systemd as init system (PID 1). Can't operate.
 #   Failed to connect to bus: Host is down"
 
-- include_role:
-    name: jm1.systemd
-  vars:
-    name: '{{ item }}'
-    masked: yes
+- command: systemctl mask '{{ item }}'
   loop:
   - keyboard-setup.service
   - system-getty.slice
@@ -28,11 +24,7 @@
 # TODO: Mask systemd-remount-fs.service systemd-update-utmp.service systemd-sysusers.service, too?
 
 # mask services that do not make sense in containers
-- include_role:
-    name: jm1.systemd
-  vars:
-    name: '{{ item }}'
-    masked: yes
+- command: systemctl mask '{{ item }}'
   loop:
   - NetworkManager.service
   - ModemManager.service
@@ -47,8 +39,4 @@
     dest: /
     mode: preserve
 
-- include_role:
-    name: jm1.systemd
-  vars:
-    name: prepare-container.service
-    enabled: yes
+- command: systemctl enable prepare-container.service

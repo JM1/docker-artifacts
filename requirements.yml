@@ -2,7 +2,6 @@
 roles:
 - jm1.common
 - jm1.base_system
-- jm1.systemd
 
 collections:
 - jm1.pkg
