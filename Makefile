@@ -9,7 +9,6 @@ SUBDIRS := debian\:buster debian\:bullseye \
 	debian-dev-full\:buster debian-dev-full\:bullseye \
 	debian-dev-hbrs\:buster debian-dev-hbrs\:bullseye \
 	debian-systemd\:buster debian-systemd\:bullseye \
-	debian-gltest\:buster \
 	debian-tex\:buster
 
 $(TOPTARGETS):
