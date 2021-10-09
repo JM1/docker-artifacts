@@ -1,6 +1,0 @@
-{
-    "docker_image": "jm1337/debian-dev-hpc:buster",
-    "docker_repository": "jm1337/debian-distcc-core",
-    "docker_tag": "buster",
-    "docker_pull": "false"
-}
