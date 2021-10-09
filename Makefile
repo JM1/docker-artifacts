@@ -11,7 +11,6 @@ SUBDIRS := debian\:buster debian\:bullseye \
 	debian-systemd\:buster debian-systemd\:bullseye \
 	debian-gltest\:buster \
 	debian-distcc\:buster \
-	jupyter-prolog-notebook \
 	debian-tex\:buster
 
 $(TOPTARGETS):
