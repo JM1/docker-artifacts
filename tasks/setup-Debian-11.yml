@@ -25,7 +25,7 @@
 
 - jm1.pkg.meta_pkg:
     name: "jm1-dev-cpp"
-    version: "1"
+    version: "2"
     depends:
     # shell
     - bash
@@ -40,16 +40,11 @@
     - g++-10
     # clang
     - clang
-    - clang-9
-    - clang-10
     - llvm
-    #  - lldb-9
-    - lldb-10
+    - lldb
     - libclang-dev
-    - libclang-9-dev
-    - libclang-10-dev
-    - clang-tools-10
-    - clang-tidy-10
+    - clang-tools-14
+    - clang-tidy
     # vcs
     - bzr
     - mercurial
@@ -90,7 +85,7 @@
     - packaging-dev
     # core libraries
     - libc++-dev
-    - libomp-dev # OpenMP
+    - libomp-14-dev # OpenMP
     - mpi-default-dev
     - libboost-all-dev
     - libboost-doc
