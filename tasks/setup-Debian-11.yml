@@ -8,14 +8,20 @@
   apt:
     name: 'ca-certificates'
 
-- copy:
+- name: Copy apt sources for  LLVM Debian/Ubuntu nightly packages etc.
+  copy:
     src: "{{ distribution_id|join('-') }}/"
     dest: /
     mode: preserve
-  notify: Update apt cache
+  register: copy
 
-- name: Update apt cache before installing packages
-  meta: flush_handlers
+- name: Update apt cache
+  when: copy.changed
+  # Handlers cannot be used here because in case that a role is run conditionally (when:) from a playbook then handlers
+  # cannot be flushed here with 'meta: flush_handlers' because of Ansible issue #41313.
+  # Ref.: https://github.com/ansible/ansible/issues/41313
+  apt:
+    update_cache: yes
 
 - jm1.pkg.meta_pkg:
     name: "jm1-dev-cpp"
