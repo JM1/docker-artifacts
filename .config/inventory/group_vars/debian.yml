@@ -1,0 +1,29 @@
+---
+# Copyright (c) 2020-2021 Jakob Meng, <jakobmeng@web.de>
+# vim:set fileformat=unix tabstop=2 shiftwidth=2 expandtab:
+# kate: end-of-line unix; space-indent on; indent-width 2; remove-trailing-spaces modified;
+
+debconf_early_config:
+- # Disable unattended-upgrades, which is pulled in by various desktop environments like KDE
+  name: unattended-upgrades
+  question: unattended-upgrades/enable_auto_updates
+  value: 'false'
+  vtype: boolean
+
+- name: locales
+  question: locales/locales_to_be_generated
+  value: 'en_US.UTF-8 UTF-8, de_DE.UTF-8 UTF-8'
+  vtype: multiselect
+
+- name: locales
+  question: locales/default_environment_locale
+  value: 'de_DE.UTF-8'
+  vtype: select
+
+packages:
+- # Remove resolvconf because /etc/resolv.conf is mounted readonly from host
+  #
+  # resolvconf does not work in Docker containers, because /etc/resolv.conf is mounted readonly from host
+  # Ref.: https://docs.docker.com/config/containers/container-networking/#dns-services
+  name: resolvconf
+  state: absent

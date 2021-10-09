@@ -1,5 +1,5 @@
 {
-    "_copyright": "Copyright (c) 2019-2020 Jakob Meng, <jakobmeng@web.de>",
+    "_copyright": "Copyright (c) 2019-2021 Jakob Meng, <jakobmeng@web.de>",
 
     "variables": {
         "docker_image": "debian",
@@ -9,11 +9,11 @@
         "docker_changes": "",
 
         "ansible_user": "root",
+        "ansible_groups": "debian",
         "ansible_host": "{{timestamp}}{{uuid}}",
-        "ansible_connection": "docker",
-        "ansible_python_interpreter": "/usr/bin/python",
+        "ansible_python_interpreter": "/usr/bin/python3",
 
-        "packages": "python"
+        "packages": "python3 python3-apt gnupg"
     },
 
     "builders": [{
@@ -37,20 +37,19 @@
     },{
         "type": "ansible",
         "playbook_file": "provision.yml",
+        "groups": "{{user `ansible_groups` }}",
         "extra_arguments": [
-            "-vvv",
+            "-v",
             "--extra-vars",
-            "ansible_user={{user `ansible_user`}} ansible_host={{user `ansible_host`}} ansible_connection={{user `ansible_connection`}} ansible_python_interpreter={{user `ansible_python_interpreter`}}"
+            "ansible_user={{user `ansible_user`}} ansible_host={{user `ansible_host`}} ansible_connection=docker ansible_python_interpreter={{user `ansible_python_interpreter`}}",
+            "-i",
+            "inventory/"
         ]
     }],
 
     "post-processors": [{
         "type": "docker-tag",
         "repository": "{{user `docker_repository`}}",
-        "tag": "{{user `docker_tag`}}-{{isotime \"20060102\"}}"
-    },{
-        "type": "docker-tag",
-        "repository": "{{user `docker_repository`}}",
-        "tag": "{{user `docker_tag`}}"
+        "tags": ["{{user `docker_tag`}}-{{isotime \"20060102\"}}", "{{user `docker_tag`}}"]
     }]
 }

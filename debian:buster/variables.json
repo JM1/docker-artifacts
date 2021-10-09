@@ -1,5 +1,8 @@
 {
+    "ansible_groups": "debian,debian_buster",
+    "ansible_python_interpreter": "/usr/bin/python3",
     "docker_image": "debian:buster",
     "docker_repository": "jm1337/debian",
-    "docker_tag": "buster"
+    "docker_tag": "buster",
+    "packages": "python3 python3-apt gnupg"
 }

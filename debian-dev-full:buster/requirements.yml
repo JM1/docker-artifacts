@@ -1,10 +1,8 @@
 ---
 roles:
 - src: jm1.common
-- src: jm1.base_system
-- src: jm1.container_docker
 - src: jm1.container_systemd
-- src: jm1.dev_cpp # e.g. required by jm1.kdevelop
+- src: jm1.dev_cpp
 - src: jm1.dev_embedded
 - src: jm1.dev_freetz
 - src: jm1.dev_haskell
@@ -16,4 +14,5 @@ roles:
 - src: jm1.kdevelop
 
 collections:
-- jm1.pkg # e.g. required by jm1.base_system
+- jm1.cloudy
+- jm1.pkg

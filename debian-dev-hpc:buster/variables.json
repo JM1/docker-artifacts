@@ -1,6 +1,9 @@
 {
+    "ansible_groups": "debian,debian_buster,pkg_cpp,pkg_hpc,pkg_python",
+    "ansible_python_interpreter": "/usr/bin/python3",
     "docker_image": "jm1337/debian:buster",
     "docker_repository": "jm1337/debian-dev-hpc",
     "docker_tag": "buster",
-    "docker_pull": "false"
+    "docker_pull": "false",
+    "packages": "python3 python3-apt gnupg"
 }

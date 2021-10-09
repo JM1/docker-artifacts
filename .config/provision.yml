@@ -1,0 +1,158 @@
+---
+# Copyright (c) 2020-2021 Jakob Meng, <jakobmeng@web.de>
+# vim:set fileformat=unix tabstop=2 shiftwidth=2 expandtab:
+# kate: end-of-line unix; space-indent on; indent-width 2; remove-trailing-spaces modified;
+
+- name: Perform basic configuration of operating system
+  hosts: all
+  any_errors_fatal: yes
+  become: yes
+  gather_facts: yes
+
+  roles:
+  - name: Change debconf database early
+    role: jm1.cloudy.debconf
+    tags: ["jm1.cloudy.debconf"]
+    vars:
+      debconf_config: '{{ debconf_early_config }}'
+      debconf_reconfigure: no
+    when: debconf_early_config is defined and os_distribution_id|first in ['Debian', 'Ubuntu']
+
+  # Role jm1.pkg.setup will use Ansible's apt module to install packages. As a side effect will install the apt python
+  # module if it is not already installed. This is necessary as Ansible's apt_repository module will need the apt python
+  # package as well but cannot install it itself because we remove the /etc/apt/sources.list in next step.
+  - name: Install dependencies of collection jm1.pkg
+    role: jm1.pkg.setup
+    tags: ["jm1.pkg.setup"]
+
+  # Remove /etc/apt/sources.list before apt repositories will be added to /etc/apt/sources.list.d/ by
+  # jm1.pkg.apt_repositories, else Ansible's apt_repository module might skip repositories if they are present in
+  # /etc/apt/sources.list.
+  - name: Remove /etc/apt/sources.list
+    role: jm1.pkg.apt_sources_list_removal
+    tags: ["jm1.pkg.apt_sources_list_removal"]
+    when: os_distribution_id|first in ['Debian', 'Ubuntu']
+    vars:
+      force_apt_sources_list_removal: yes
+
+  - name: Manage apt keys
+    role: jm1.pkg.apt_keys
+    tags: ["jm1.pkg.apt_keys"]
+    when: os_distribution_id|first in ['Debian', 'Ubuntu']
+
+  - name: Manage apt repositories
+    role: jm1.pkg.apt_repositories
+    tags: ["jm1.pkg.apt_repositories"]
+    when: os_distribution_id|first in ['Debian', 'Ubuntu']
+
+  - name: Setup local groups
+    role: jm1.cloudy.groups
+    tags: ["jm1.cloudy.groups"]
+
+  - name: Setup local users
+    role: jm1.cloudy.users
+    tags: ["jm1.cloudy.users"]
+
+- name: Perform advanced configuration of operating system
+  hosts: all
+  any_errors_fatal: yes
+  become: yes
+  gather_facts: yes
+
+  roles:
+  - name: Manage packages
+    role: jm1.cloudy.packages
+    tags: ["jm1.cloudy.packages"]
+
+  - name: Manage meta packages
+    role: jm1.cloudy.meta_packages
+    tags: ["jm1.cloudy.meta_packages"]
+
+  - name: Manage files, directories, links and more
+    role: jm1.filesystem
+    tags: ["jm1.filesystem"]
+
+  - name: Change debconf database
+    role: jm1.cloudy.debconf
+    tags: ["jm1.cloudy.debconf"]
+    when: os_distribution_id|first in ['Debian', 'Ubuntu']
+
+  - name: Setup systemd for use in containers
+    role: jm1.container_systemd
+    tags: ["jm1.container_systemd"]
+    when: inventory_hostname in groups.svc_systemd_container
+
+  - name: Setup a C++ development environment
+    role: jm1.dev_cpp
+    tags: ["jm1.dev_cpp"]
+    when: inventory_hostname in groups.pkg_cpp
+
+  - name: Setup a embedded development environment
+    role: jm1.dev_embedded
+    tags: ["jm1.dev_embedded"]
+    when: inventory_hostname in groups.pkg_embedded
+
+  - name: Setup a development environment for FREETZ
+    role: jm1.dev_freetz
+    tags: ["jm1.dev_freetz"]
+    when: inventory_hostname in groups.pkg_freetz
+
+  - name: Setup a Haskell development environment
+    role: jm1.dev_haskell
+    tags: ["jm1.dev_haskell"]
+    when: inventory_hostname in groups.pkg_haskell
+
+  - name: Setup a HPC development environment
+    role: jm1.dev_hpc
+    tags: ["jm1.dev_hpc"]
+    when: inventory_hostname in groups.pkg_hpc
+
+  - name: Setup a Java development environment
+    role: jm1.dev_java
+    tags: ["jm1.dev_java"]
+    when: inventory_hostname in groups.pkg_java
+
+  - name: Setup a development environment for OpenWRT
+    role: jm1.dev_openwrt
+    tags: ["jm1.dev_openwrt"]
+    when: inventory_hostname in groups.pkg_openwrt
+
+  - name: Setup a Prolog development environment
+    role: jm1.dev_prolog
+    tags: ["jm1.dev_prolog"]
+    when: inventory_hostname in groups.pkg_prolog
+
+  - name: Setup a Python development environment
+    role: jm1.dev_python
+    tags: ["jm1.dev_python"]
+    when: inventory_hostname in groups.pkg_python
+
+  - name: Build and install KDevelop from Git
+    role: jm1.kdevelop
+    tags: ["jm1.kdevelop"]
+    when: inventory_hostname in groups.pkg_kdevelop
+
+- name: Perform cleanup operations
+  hosts: all
+  any_errors_fatal: yes
+  become: yes
+  gather_facts: yes
+
+  tasks:
+  - name: Purge apt cache to reduce image size
+    # Ref.: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
+    shell: rm -rf /var/lib/apt/lists/*
+    args:
+      # Silence warning "Consider using the file module with state=absent rather
+      # than running rm. If you need to use command because file is insufficient
+      # you can add warn=False to this command task or set command_warnings=False
+      # in ansible.cfg to get rid of this message." because Ansible's file module
+      # does not feature a state=empty yet.
+      # Ref.: https://github.com/ansible/ansible/issues/18910
+      warn: false
+    when: inventory_hostname in groups.debian
+
+  - name: Purge KDE build files to reduce image size,
+    file:
+      path: /usr/local/src/kdesrc/build/
+      state: absent

@@ -1,10 +1,9 @@
 ---
 roles:
 - src: jm1.common
-- src: jm1.base_system
-- src: jm1.container_docker
 - src: jm1.dev_cpp
 - src: jm1.dev_hpc
 
 collections:
-- jm1.pkg # e.g. required by jm1.base_system
+- jm1.cloudy
+- jm1.pkg
