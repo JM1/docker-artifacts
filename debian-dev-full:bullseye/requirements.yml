@@ -4,7 +4,6 @@ roles:
 - src: jm1.dev_embedded
 - src: jm1.dev_freetz
 - src: jm1.dev_haskell
-- src: jm1.dev_hpc
 - src: jm1.dev_java
 - src: jm1.dev_openwrt
 - src: jm1.dev_prolog

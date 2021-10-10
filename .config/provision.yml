@@ -103,8 +103,8 @@
     when: inventory_hostname in groups.pkg_haskell
 
   - name: Setup a HPC development environment
-    role: jm1.dev_hpc
-    tags: ["jm1.dev_hpc"]
+    role: hpc
+    tags: ["hpc"]
     when: inventory_hostname in groups.pkg_hpc
 
   - name: Setup a Java development environment
