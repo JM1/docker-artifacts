@@ -83,8 +83,8 @@
     when: inventory_hostname in groups.svc_systemd_container
 
   - name: Setup a C++ development environment
-    role: jm1.dev_cpp
-    tags: ["jm1.dev_cpp"]
+    role: cpp
+    tags: ["cpp"]
     when: inventory_hostname in groups.pkg_cpp
 
   - name: Setup a embedded development environment

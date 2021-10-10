@@ -1,7 +1,6 @@
 ---
 roles:
 - src: jm1.common
-- src: jm1.dev_cpp
 - src: jm1.dev_embedded
 - src: jm1.dev_freetz
 - src: jm1.dev_haskell

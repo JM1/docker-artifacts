@@ -1,0 +1,6 @@
+# 2016-2021 Jakob Meng, <jakobmeng@web.de>
+# LLVM Debian/Ubuntu nightly packages
+# Ref.: https://apt.llvm.org/
+
+deb http://apt.llvm.org/buster/ llvm-toolchain-buster main
+#deb-src http://apt.llvm.org/buster/ llvm-toolchain-buster main
