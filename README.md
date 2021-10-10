@@ -45,3 +45,14 @@ make docker-push
 # push only e.g. debian:buster
 (cd debian\:buster && make docker-push)
 ```
+
+## License
+
+GNU General Public License v3.0 or later
+
+See [LICENSE.md](LICENSE.md) to see the full text.
+
+## Author
+
+Jakob Meng
+@jm1 ([github](https://github.com/jm1), [galaxy](https://galaxy.ansible.com/jm1), [web](http://www.jakobmeng.de))
