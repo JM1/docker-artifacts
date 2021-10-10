@@ -28,7 +28,7 @@
     update_cache: yes
 
 - jm1.pkg.meta_pkg:
-    name: "jm1-dev-cpp"
+    name: "jm1-docker-artifacts-cpp"
     version: "2"
     depends:
     # shell
