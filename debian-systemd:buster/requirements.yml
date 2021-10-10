@@ -1,7 +1,6 @@
 ---
 roles:
 - src: jm1.common
-- src: jm1.container_systemd
 
 collections:
 - jm1.cloudy

@@ -78,8 +78,8 @@
     when: os_distribution_id|first in ['Debian', 'Ubuntu']
 
   - name: Setup systemd for use in containers
-    role: jm1.container_systemd
-    tags: ["jm1.container_systemd"]
+    role: systemd_container
+    tags: ["systemd_container"]
     when: inventory_hostname in groups.svc_systemd_container
 
   - name: Setup a C++ development environment
