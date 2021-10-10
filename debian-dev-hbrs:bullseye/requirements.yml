@@ -2,7 +2,6 @@
 roles:
 - src: jm1.common
 - src: jm1.dev_hpc
-- src: jm1.kdevelop
 
 collections:
 - jm1.cloudy

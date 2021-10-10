@@ -1,0 +1,4 @@
+---
+install_from_source: false
+
+install_prefix: /usr/local

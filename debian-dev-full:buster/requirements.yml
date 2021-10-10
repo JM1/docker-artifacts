@@ -9,7 +9,6 @@ roles:
 - src: jm1.dev_openwrt
 - src: jm1.dev_prolog
 - src: jm1.dev_python
-- src: jm1.kdevelop
 
 collections:
 - jm1.cloudy

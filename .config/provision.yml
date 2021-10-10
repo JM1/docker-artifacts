@@ -128,8 +128,8 @@
     when: inventory_hostname in groups.pkg_python
 
   - name: Build and install KDevelop from Git
-    role: jm1.kdevelop
-    tags: ["jm1.kdevelop"]
+    role: kdevelop
+    tags: ["kdevelop"]
     when: inventory_hostname in groups.pkg_kdevelop
 
 - name: Perform cleanup operations
