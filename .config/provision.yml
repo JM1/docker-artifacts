@@ -108,8 +108,8 @@
     when: inventory_hostname in groups.pkg_hpc
 
   - name: Setup a Java development environment
-    role: jm1.dev_java
-    tags: ["jm1.dev_java"]
+    role: java
+    tags: ["java"]
     when: inventory_hostname in groups.pkg_java
 
   - name: Setup a development environment for OpenWRT
