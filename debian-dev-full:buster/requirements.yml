@@ -1,7 +1,6 @@
 ---
 roles:
 - src: jm1.common
-- src: jm1.dev_prolog
 - src: jm1.dev_python
 
 collections:

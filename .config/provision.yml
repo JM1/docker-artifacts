@@ -118,8 +118,8 @@
     when: inventory_hostname in groups.pkg_openwrt
 
   - name: Setup a Prolog development environment
-    role: jm1.dev_prolog
-    tags: ["jm1.dev_prolog"]
+    role: prolog
+    tags: ["prolog"]
     when: inventory_hostname in groups.pkg_prolog
 
   - name: Setup a Python development environment
