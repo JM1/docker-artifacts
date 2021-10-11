@@ -10,8 +10,7 @@
 
 - name: Setup C++ development environment
   import_role:
-    name: jm1.dev_cpp # If Ansible raises "ERROR! the role 'jm1.dev_cpp' was not found" then you might use the
-                      # ansible-galaxy and the provided requirements.yml to install all missing role dependencies.
+    name: cpp
 
 - name: Install dependencies of collection jm1.pkg
   import_role:
