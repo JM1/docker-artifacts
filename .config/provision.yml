@@ -88,8 +88,8 @@
     when: inventory_hostname in groups.pkg_cpp
 
   - name: Setup a embedded development environment
-    role: jm1.dev_embedded
-    tags: ["jm1.dev_embedded"]
+    role: embedded
+    tags: ["embedded"]
     when: inventory_hostname in groups.pkg_embedded
 
   - name: Setup a development environment for FREETZ
