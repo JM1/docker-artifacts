@@ -113,8 +113,8 @@
     when: inventory_hostname in groups.pkg_java
 
   - name: Setup a development environment for OpenWRT
-    role: jm1.dev_openwrt
-    tags: ["jm1.dev_openwrt"]
+    role: openwrt
+    tags: ["openwrt"]
     when: inventory_hostname in groups.pkg_openwrt
 
   - name: Setup a Prolog development environment
