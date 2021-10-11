@@ -98,8 +98,8 @@
     when: inventory_hostname in groups.pkg_freetz
 
   - name: Setup a Haskell development environment
-    role: jm1.dev_haskell
-    tags: ["jm1.dev_haskell"]
+    role: haskell
+    tags: ["haskell"]
     when: inventory_hostname in groups.pkg_haskell
 
   - name: Setup a HPC development environment
