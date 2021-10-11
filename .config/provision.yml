@@ -123,8 +123,8 @@
     when: inventory_hostname in groups.pkg_prolog
 
   - name: Setup a Python development environment
-    role: jm1.dev_python
-    tags: ["jm1.dev_python"]
+    role: python
+    tags: ["python"]
     when: inventory_hostname in groups.pkg_python
 
   - name: Build and install KDevelop from Git
