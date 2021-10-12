@@ -22,7 +22,3 @@ distribution_id:
         ansible_facts.distribution_major_version is not number and
         ansible_facts.distribution_major_version != 'NA' else
           ansible_facts.distribution_major_version }}"
-
-install_from_source: false
-
-install_prefix: /usr/local

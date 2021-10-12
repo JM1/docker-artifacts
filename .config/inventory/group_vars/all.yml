@@ -30,7 +30,7 @@ apt_keys: |
         apt_keys_ubuntu.ubuntu_2012_cdimage,
         apt_keys_ubuntu.ubuntu_2018_archive
       ]
-    }[os_distribution_id|join('_')|regex_replace('[^A-Za-z0-9 _-]', '_')]
+    }[distribution_id|join('_')|regex_replace('[^A-Za-z0-9 _-]', '_')]
   }}
 
 # apt_keys_debian is set in role jm1.pkg.apt_keys
@@ -66,7 +66,7 @@ apt_repositories: |
         apt_repositories_ubuntu_20_04.focal_security.deb,
         apt_repositories_ubuntu_20_04.focal_updates.deb
       ]
-    }[os_distribution_id|join('_')|regex_replace('[^A-Za-z0-9 _-]', '_')]
+    }[distribution_id|join('_')|regex_replace('[^A-Za-z0-9 _-]', '_')]
   }}
 
 # apt_repositories_debian_9 is set in role jm1.pkg.apt_repositories
@@ -76,4 +76,4 @@ apt_repositories: |
 # apt_repositories_ubuntu_20_04 is set in role jm1.pkg.apt_repositories
 
 ansible_python_interpreter: |-
-  {{ '/usr/bin/python' if os_distribution_id is defined and os_distribution_id == ['CentOS', '7'] else '/usr/bin/python3' }}
+  {{ '/usr/bin/python' if distribution_id is defined and distribution_id == ['CentOS', '7'] else '/usr/bin/python3' }}

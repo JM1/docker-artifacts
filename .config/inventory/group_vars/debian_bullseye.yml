@@ -24,6 +24,6 @@ meta_packages:
   - python3-apt # Required for Ansible's apt module
   - gpg # Required for Ansible's apt_key module
 
-os_distribution_id:
+distribution_id:
 - 'Debian'
 - '11'
