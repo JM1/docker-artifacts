@@ -38,10 +38,12 @@
     - gcc
     - g++
     - gdb
+    - gdbserver
     - gcc-7
     - g++-7
     - gcc-8
     - g++-8
+    - g++-mingw-w64
     # clang
     - clang
     - llvm
