@@ -87,6 +87,11 @@
     tags: ["cpp"]
     when: inventory_hostname in groups.pkg_cpp
 
+  - name: Setup an development environment for Debian packages
+    role: debian
+    tags: ["debian"]
+    when: inventory_hostname in groups.pkg_debian
+
   - name: Setup a embedded development environment
     role: embedded
     tags: ["embedded"]
