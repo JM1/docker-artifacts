@@ -34,6 +34,7 @@
     - paraview-python
     - python3-numpy
     - python3-pytest
+    - hdf5-tools
 
     # NOTE:
     # - libnetcdf-c++4-dev and libnetcdf-dev are for handling netCDF files as used for Grids in DLRs TAU

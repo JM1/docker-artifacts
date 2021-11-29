@@ -162,6 +162,7 @@
     - plasma-integration
     - konsole
     - kate
+    - kcachegrind
     - dolphin
     - systemsettings
     - plasma-framework

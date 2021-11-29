@@ -16,3 +16,4 @@
     - maven
     - default-jdk
     - default-jre
+    - visualvm

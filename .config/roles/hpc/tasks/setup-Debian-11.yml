@@ -32,6 +32,7 @@
     - python3-paraview
     - python3-pytest
     - libpython3.9-dev # workaround for bug 972551, https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=972551
+    - hdf5-tools
 
     # NOTE:
     # - libnetcdf-c++4-dev and libnetcdf-dev are for handling netCDF files as used for Grids in DLRs TAU
