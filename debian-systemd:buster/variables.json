@@ -1,9 +1,0 @@
-{
-    "ansible_groups": "debian,debian_buster,user_devil,svc_systemd_container",
-    "ansible_python_interpreter": "/usr/bin/python3",
-    "docker_image": "jm1337/debian:buster",
-    "docker_repository": "jm1337/debian-systemd-core",
-    "docker_tag": "buster",
-    "docker_pull": "false",
-    "packages": "python3 python3-apt gnupg"
-}

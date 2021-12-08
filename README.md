@@ -11,8 +11,8 @@ git clone --depth 1 https://github.com/JM1/docker-artifacts.git
 # pull all images
 make docker-pull
 
-# build only e.g. jm1337/debian:buster
-(cd debian\:buster && make docker-pull)
+# build only e.g. jm1337/debian:bullseye
+(cd debian\:bullseye && make docker-pull)
 ```
 
 ## How to build images locally
@@ -26,8 +26,8 @@ git clone --depth 1 https://github.com/JM1/docker-artifacts.git
 # build all images
 make
 
-# build only e.g. jm1337/debian:buster
-(cd debian\:buster && make)
+# build only e.g. jm1337/debian:bullseye
+(cd debian\:bullseye && make)
 ```
 
 ## How to push images to Docker Hub
@@ -42,8 +42,8 @@ make
 # push all images
 make docker-push
 
-# push only e.g. debian:buster
-(cd debian\:buster && make docker-push)
+# push only e.g. debian:bullseye
+(cd debian\:bullseye && make docker-push)
 ```
 
 ## License

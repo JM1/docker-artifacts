@@ -4,11 +4,11 @@
 TOPTARGETS := all clean docker-push docker-pull
 
 # sorted by build dependencies
-SUBDIRS := debian\:buster debian\:bullseye \
-	debian-dev-hpc\:buster debian-dev-hpc\:bullseye \
-	debian-dev-full\:buster debian-dev-full\:bullseye \
-	debian-dev-hbrs\:buster debian-dev-hbrs\:bullseye \
-	debian-systemd\:buster debian-systemd\:bullseye \
+SUBDIRS := debian\:bullseye \
+	debian-dev-hpc\:bullseye \
+	debian-dev-full\:bullseye \
+	debian-dev-hbrs\:bullseye \
+	debian-systemd\:bullseye \
 	debian-tex\:bullseye
 
 $(TOPTARGETS):
