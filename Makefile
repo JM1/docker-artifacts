@@ -9,7 +9,7 @@ SUBDIRS := debian\:buster debian\:bullseye \
 	debian-dev-full\:buster debian-dev-full\:bullseye \
 	debian-dev-hbrs\:buster debian-dev-hbrs\:bullseye \
 	debian-systemd\:buster debian-systemd\:bullseye \
-	debian-tex\:buster
+	debian-tex\:bullseye
 
 $(TOPTARGETS):
 	@for SUBDIR in $(SUBDIRS); do \
