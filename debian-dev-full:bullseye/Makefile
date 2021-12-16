@@ -12,7 +12,7 @@ include ../.config/docker.mk
 
 .NOTPARALLEL: # respect dependencies among targets
 
-all: ansible-install-requirements packer docker-build
+all: ansible-install-requirements packer
 .PHONY: all
 
 clean-cache:

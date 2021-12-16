@@ -1,8 +1,8 @@
 {
-    "ansible_groups": "debian,debian_bullseye,pkg_cpp,pkg_debian,pkg_embedded,pkg_freetz,pkg_haskell,pkg_hpc,pkg_java,pkg_openwrt,pkg_prolog,pkg_python,pkg_kdevelop,user_devil,svc_systemd_container",
+    "ansible_groups": "debian,debian_bullseye,pkg_cpp,pkg_debian,pkg_embedded,pkg_freetz,pkg_haskell,pkg_hpc,pkg_java,pkg_openwrt,pkg_prolog,pkg_python,pkg_kdevelop",
     "ansible_python_interpreter": "/usr/bin/python3",
     "docker_image": "jm1337/debian-dev-hpc:bullseye",
-    "docker_repository": "jm1337/debian-dev-full-core",
+    "docker_repository": "jm1337/debian-dev-full",
     "docker_tag": "bullseye",
     "docker_pull": "false",
     "packages": "python3 python3-apt gnupg"
