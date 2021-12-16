@@ -15,11 +15,6 @@
 
 FROM jm1337/debian-systemd-core:bullseye
 
-#USER devil
-#ENV HOME /home/devil
-#WORKDIR /home/devil
-#ENV SHELL /bin/bash
-
 ENV container docker
 STOPSIGNAL SIGRTMIN+3
 

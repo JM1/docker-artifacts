@@ -1,5 +1,5 @@
 {
-    "ansible_groups": "debian,debian_bullseye,user_devil,svc_systemd_container",
+    "ansible_groups": "debian,debian_bullseye,svc_systemd_container",
     "ansible_python_interpreter": "/usr/bin/python3",
     "docker_image": "jm1337/debian:bullseye",
     "docker_repository": "jm1337/debian-systemd-core",
