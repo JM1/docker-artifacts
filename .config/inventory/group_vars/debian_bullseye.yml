@@ -17,7 +17,9 @@ meta_packages:
   - locales
   - patch
   - p7zip-full
+  - screen
   - sudo
+  - tmux
   - xz-utils
 
   - python3 # Required for Ansible
