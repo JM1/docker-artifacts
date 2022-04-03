@@ -17,12 +17,14 @@ meta_packages:
   - less
   - locales
   - patch
+  - psutils
   - p7zip-full
   - screen
   - sudo
   - tmux
+  - vim
   - xz-utils
-
+  #
   - python3 # Required for Ansible
   - python3-apt # Required for Ansible's apt module
   - gpg # Required for Ansible's apt_key module
