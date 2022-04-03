@@ -1,5 +1,5 @@
 {
-    "ansible_groups": "debian,debian_bullseye,pkg_cpp,pkg_hpc,pkg_java,pkg_python,pkg_kdevelop",
+    "ansible_groups": "debian,debian_bullseye,pkg_cpp,pkg_hpc,pkg_python,pkg_kdevelop",
     "ansible_python_interpreter": "/usr/bin/python3",
     "docker_image": "jm1337/debian-dev-hpc:bullseye",
     "docker_repository": "jm1337/debian-dev-full",
