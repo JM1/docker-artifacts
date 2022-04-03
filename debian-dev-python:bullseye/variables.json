@@ -1,0 +1,9 @@
+{
+    "ansible_groups": "debian,debian_bullseye,pkg_python",
+    "ansible_python_interpreter": "/usr/bin/python3",
+    "docker_image": "jm1337/debian:bullseye",
+    "docker_repository": "jm1337/debian-dev-python",
+    "docker_tag": "bullseye",
+    "docker_pull": "false",
+    "packages": "python3 python3-apt gnupg"
+}

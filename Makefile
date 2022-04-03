@@ -9,6 +9,7 @@ SUBDIRS := debian\:bullseye \
 	debian-dev-hpc\:bullseye \
 	debian-dev-hbrs\:bullseye \
 	debian-dev-java\:bullseye \
+	debian-dev-python\:bullseye \
 	debian-embedded\:bullseye \
 	debian-systemd\:bullseye \
 	debian-tex\:bullseye
