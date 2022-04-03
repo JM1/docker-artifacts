@@ -14,6 +14,7 @@ meta_packages:
   - aptitude
   - at
   - fzf
+  - less
   - locales
   - patch
   - p7zip-full
