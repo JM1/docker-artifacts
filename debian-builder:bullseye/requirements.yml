@@ -1,0 +1,6 @@
+---
+roles: []
+
+collections:
+- jm1.cloudy
+- jm1.pkg

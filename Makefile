@@ -5,6 +5,7 @@ TOPTARGETS := all clean docker-push docker-pull
 
 # sorted by build dependencies
 SUBDIRS := debian\:bullseye \
+	debian-builder\:bullseye \
 	debian-dev-hpc\:bullseye \
 	debian-dev-full\:bullseye \
 	debian-dev-hbrs\:bullseye \
