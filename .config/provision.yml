@@ -102,11 +102,6 @@
     tags: ["freetz"]
     when: inventory_hostname in groups.pkg_freetz
 
-  - name: Setup a Haskell development environment
-    role: haskell
-    tags: ["haskell"]
-    when: inventory_hostname in groups.pkg_haskell
-
   - name: Setup a HPC development environment
     role: hpc
     tags: ["hpc"]
@@ -121,11 +116,6 @@
     role: openwrt
     tags: ["openwrt"]
     when: inventory_hostname in groups.pkg_openwrt
-
-  - name: Setup a Prolog development environment
-    role: prolog
-    tags: ["prolog"]
-    when: inventory_hostname in groups.pkg_prolog
 
   - name: Setup a Python development environment
     role: python
