@@ -1,7 +1,0 @@
----
-roles: []
-
-collections:
-- community.docker
-- jm1.cloudy
-- jm1.pkg
