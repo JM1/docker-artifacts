@@ -19,15 +19,15 @@
     - pycodestyle # formerly called pep8
     - pypy
     - pypy-doc
-    - pyqt5-dev
-    - pyqt5-dev-tools
-    - pyqt5-examples
     - python3-pip
     - python3-virtualenv
     - python3-pytest
     - swig
     suggests:
     - pipx
+    - pyqt5-dev
+    - pyqt5-dev-tools
+    - pyqt5-examples
     - python3-pyside2.qt3danimation
     - python3-pyside2.qt3dcore
     - python3-pyside2.qt3dextras
