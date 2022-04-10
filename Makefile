@@ -4,7 +4,8 @@
 TOPTARGETS := all clean docker-push docker-pull
 
 # sorted by build dependencies
-SUBDIRS := bootstrap-docker\:bullseye \
+SUBDIRS := ansible\:bookworm \
+	bootstrap-docker\:bullseye \
 	debian\:bullseye \
 	debian-dev-hpc\:bullseye \
 	debian-dev-hbrs\:bullseye \
