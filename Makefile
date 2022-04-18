@@ -13,7 +13,10 @@ SUBDIRS := ansible\:bookworm \
 	debian-embedded\:bullseye \
 	debian-packaging\:bullseye \
 	debian-systemd\:bullseye \
-	debian-tex\:bullseye
+	debian-tex\:bullseye \
+	go-lsp-server\:rawhide \
+	python-lsp-server\:rawhide \
+	python\:rawhide
 
 $(TOPTARGETS):
 	@for SUBDIR in $(SUBDIRS); do \
