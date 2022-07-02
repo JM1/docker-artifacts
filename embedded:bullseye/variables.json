@@ -2,7 +2,7 @@
     "ansible_groups": "debian,debian_bullseye,pkg_embedded,pkg_freetz,pkg_openwrt",
     "ansible_python_interpreter": "/usr/bin/python3",
     "docker_image": "jm1337/debian:bullseye",
-    "docker_repository": "jm1337/debian-embedded",
+    "docker_repository": "jm1337/embedded",
     "docker_tag": "bullseye",
     "docker_pull": "false",
     "packages": "python3 python3-apt gnupg"

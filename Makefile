@@ -10,10 +10,10 @@ SUBDIRS := ansible\:bookworm \
 	debian-dev-hpc\:bullseye \
 	debian-dev-hbrs\:bullseye \
 	debian-dev-java\:bullseye \
-	debian-embedded\:bullseye \
 	debian-packaging\:bullseye \
 	debian-systemd\:bullseye \
 	debian-tex\:bullseye \
+	embedded\:bullseye \
 	go-lsp-server\:rawhide \
 	python-lsp-server\:rawhide \
 	python\:rawhide
