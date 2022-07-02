@@ -1,7 +1,7 @@
 # vim:set syntax=make:
 # kate: syntax Makefile; tab-indents on; replace-tabs off;
 
-DOCKER_REPOSITORY = jm1337/debian-tex
+DOCKER_REPOSITORY = jm1337/tex
 DOCKER_TAG = bullseye
 
 include ../.config/docker.mk
