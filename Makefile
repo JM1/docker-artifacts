@@ -12,11 +12,14 @@ SUBDIRS := ansible\:bookworm \
 	debian-dev-java\:bullseye \
 	debian-packaging\:bullseye \
 	debian-systemd\:bullseye \
+	dhcpd\:rawhide \
 	embedded\:bullseye \
 	go-lsp-server\:rawhide \
+	httpd\:rawhide \
 	python-lsp-server\:rawhide \
 	python\:rawhide \
-	tex\:bullseye
+	tex\:bullseye \
+	tftpd\:rawhide
 
 $(TOPTARGETS):
 	@for SUBDIR in $(SUBDIRS); do \
