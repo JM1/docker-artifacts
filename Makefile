@@ -7,6 +7,8 @@ TOPTARGETS := all clean docker-push docker-pull
 SUBDIRS := ansible\:bookworm \
 	bootstrap-docker\:bullseye \
 	debian\:bullseye \
+	debian-builder\:bookworm \
+	debian-builder\:bullseye \
 	debian-dev-hpc\:bullseye \
 	debian-dev-hbrs\:bullseye \
 	debian-dev-java\:bullseye \
