@@ -6,6 +6,7 @@ TOPTARGETS := all clean docker-push docker-pull
 # sorted by build dependencies
 SUBDIRS := ansible\:bookworm \
 	bootstrap-docker\:bullseye \
+	debian\:bookworm \
 	debian\:bullseye \
 	debian-builder\:bookworm \
 	debian-builder\:bullseye \

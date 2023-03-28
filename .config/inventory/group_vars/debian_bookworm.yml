@@ -1,0 +1,34 @@
+---
+# Copyright (c) 2022 Jakob Meng, <jakobmeng@web.de>
+# vim:set fileformat=unix tabstop=2 shiftwidth=2 expandtab:
+# kate: end-of-line unix; space-indent on; indent-width 2; remove-trailing-spaces modified;
+
+meta_packages:
+- name: "jm1-docker-artifacts-debian-bookworm"
+  version: "1"
+  depends:
+  # NOTE: Sync package list with JM1's install guides for Debian.
+  - acl
+  - apt-listchanges
+  - apt-transport-https
+  - aptitude
+  - at
+  - fzf
+  - less
+  - locales
+  - patch
+  - psutils
+  - p7zip-full
+  - screen
+  - sudo
+  - tmux
+  - vim
+  - xz-utils
+  #
+  - python3 # Required for Ansible
+  - python3-apt # Required for Ansible's apt module
+  - gpg # Required for Ansible's apt_key module
+
+distribution_id:
+- 'Debian'
+- '12'
