@@ -1,0 +1,9 @@
+{
+    "ansible_groups": "debian,debian_bookworm,pkg_debian",
+    "ansible_python_interpreter": "/usr/bin/python3",
+    "docker_image": "jm1337/debian:bookworm",
+    "docker_repository": "jm1337/debian-packaging",
+    "docker_tag": "bookworm",
+    "docker_pull": "false",
+    "packages": "python3 python3-apt gnupg"
+}

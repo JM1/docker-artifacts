@@ -13,6 +13,7 @@ SUBDIRS := ansible\:bookworm \
 	debian-dev-hpc\:bullseye \
 	debian-dev-hbrs\:bullseye \
 	debian-dev-java\:bullseye \
+	debian-packaging\:bookworm \
 	debian-packaging\:bullseye \
 	debian-systemd\:bullseye \
 	devbox\:rawhide \
