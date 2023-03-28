@@ -12,6 +12,7 @@ SUBDIRS := ansible\:bookworm \
 	debian-dev-java\:bullseye \
 	debian-packaging\:bullseye \
 	debian-systemd\:bullseye \
+	devbox\:rawhide \
 	dhcpd\:rawhide \
 	embedded\:bullseye \
 	httpd\:rawhide \
