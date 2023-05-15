@@ -25,12 +25,14 @@ RUN curl -L -o /etc/yum.repos.d/vscode.repo https://packages.microsoft.com/yumre
   dnf -y upgrade && \
   dnf -y install \
     code dbus-x11 \
-    fzf htop less man-db patch procps psmisc screen tmux xz vim hostname \
-    git git-lfs openssh-clients \
+    bash-completion fzf htop less man-db patch procps psmisc screen tmux xz vim hostname \
+    git git-lfs mercurial myrepos subversion \
+    openssh-clients \
     rust cargo rust-analyzer \
     gcc gdb clang cmake gcc-g++ \
     python3 python3-pip python3-virtualenv python3-lsp-black python3-lsp-jsonrpc python3-lsp-server \
     golang golang-x-tools-gopls \
     nodejs nodejs-bash-language-server \
+    binwalk rst2pdf \
     && \
   dnf clean all
