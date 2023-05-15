@@ -15,13 +15,17 @@
 
 FROM registry.fedoraproject.org/fedora:rawhide
 
+# NOTE: dnf check-update will signal available package upgrades with an exit code 100.
+#       Fix it by pulling an updated base image.
+
 # code has Visual Studio Code
 # dbus-x11 has dbus-launch
 # man-db has man
 # procps has ps
 # psmisc has killall
-RUN curl -L -o /etc/yum.repos.d/vscode.repo https://packages.microsoft.com/yumrepos/vscode/config.repo && \
-  dnf -y check-update && \
+RUN curl --silent --location --output /etc/yum.repos.d/vscode.repo \
+    https://packages.microsoft.com/yumrepos/vscode/config.repo && \
+  dnf check-update && \
   dnf -y upgrade && \
   dnf -y install \
     code dbus-x11 \
