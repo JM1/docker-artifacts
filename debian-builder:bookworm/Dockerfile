@@ -19,7 +19,15 @@ ARG DEBIAN_FRONTEND=noninteractive
 
 # Ref.: https://salsa.debian.org/salsa-ci-team/pipeline/-/blob/master/salsa-ci.yml
 
-RUN sed -n '/^deb\s/s//deb-src /p' /etc/apt/sources.list > /etc/apt/sources.list.d/deb-src.list
+RUN \
+  if [ -f /etc/apt/sources.list ]; then \
+    sed -n '/^deb\s/s//deb-src /p' /etc/apt/sources.list > /etc/apt/sources.list.d/deb-src.list; \
+  fi
+
+RUN \
+  if [ -f /etc/apt/sources.list.d/debian.sources ]; then \
+    sed -i 's/^Types: deb$/Types: deb deb-src/' /etc/apt/sources.list.d/debian.sources; \
+  fi
 
 RUN apt-get update && \
   apt-get install -y --no-install-recommends ccache fakeroot build-essential && \
@@ -28,7 +36,7 @@ RUN apt-get update && \
 
 RUN useradd salsaci && \
   mkdir -p /build /cache/.ccache && \
-  chown -R salsaci. /cache/.ccache
+  chown -R salsaci: /cache/.ccache
 
 ENV PATH="/usr/lib/ccache/:${PATH}"
 ENV CCACHE_DIR=/cache/.ccache
