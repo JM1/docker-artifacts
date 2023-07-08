@@ -34,7 +34,7 @@ RUN curl --silent --location --output /etc/yum.repos.d/vscode.repo \
     openssh-clients \
     rust cargo rust-analyzer \
     gcc gdb clang cmake gcc-g++ \
-    python3 python3-pip python3-virtualenv python3-lsp-black python3-lsp-jsonrpc python3-lsp-server \
+    python3 python3-pip python3-virtualenv \
     golang golang-x-tools-gopls \
     nodejs nodejs-bash-language-server \
     binwalk rst2pdf \
