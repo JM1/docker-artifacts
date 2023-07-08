@@ -25,7 +25,7 @@ FROM registry.fedoraproject.org/fedora:rawhide
 # psmisc has killall
 RUN curl --silent --location --output /etc/yum.repos.d/vscode.repo \
     https://packages.microsoft.com/yumrepos/vscode/config.repo && \
-  dnf check-update && \
+  dnf -y check-update && \
   dnf -y upgrade && \
   dnf -y install \
     code dbus-x11 \
