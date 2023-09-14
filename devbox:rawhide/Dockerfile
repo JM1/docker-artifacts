@@ -30,6 +30,7 @@ RUN curl --silent --location --output /etc/yum.repos.d/vscode.repo \
   dnf -y install \
     code dbus-x11 \
     bash-completion fzf htop less man-db patch procps psmisc screen tmux xz vim hostname \
+    glibc-langpack-en \
     git git-lfs mercurial myrepos subversion \
     openssh-clients \
     rust cargo rust-analyzer \
