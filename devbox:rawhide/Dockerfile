@@ -21,9 +21,13 @@ FROM registry.fedoraproject.org/fedora:rawhide
 # man-db has man
 # procps has ps
 # psmisc has killall
+# iproute has ip
+# bind-utils has dig
+# iputils has ping
 RUN dnf -y check-update && \
   dnf -y upgrade && \
   dnf -y install \
+    bind-utils iproute iputils tcpdump traceroute \
     bash-completion fzf htop less man-db patch procps psmisc screen tmux xz vim hostname \
     glibc-langpack-en \
     git git-lfs mercurial myrepos subversion \
