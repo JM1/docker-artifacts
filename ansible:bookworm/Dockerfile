@@ -21,9 +21,10 @@ RUN apt-get update && \
   apt-get install -y \
    apt-utils fzf less locales patch procps screen tmux xz-utils vim && \
   apt-get install --no-install-recommends -y \
-    python3-libvirt libvirt-clients && \
+    python3-libvirt libvirt-clients libvirt-dev && \
   apt-get install -y \
     ansible-core git git-lfs ssh-client ipython3 python3 \
-    python3-apt python3-pip python3-virtualenv python3-openstacksdk && \
+    python3-apt python3-pip python3-virtualenv python3-openstacksdk \
+    python3-dev gcc pkg-config && \
   apt-get purge -y *-doc && \
   rm -rf /var/lib/apt/lists/*
