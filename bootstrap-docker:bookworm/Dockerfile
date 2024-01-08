@@ -13,7 +13,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 
-FROM debian:bullseye
+FROM debian:bookworm
 
 ARG DEBIAN_FRONTEND=noninteractive
 
@@ -28,7 +28,7 @@ RUN git clone https://github.com/JM1/docker-artifacts.git /build && \
     -exec ln -v -s /cache '{}/.cache' \; && \
   mkdir -p /usr/share/ansible/collections && \
   ansible-galaxy collection install -vvv --collections-path /usr/share/ansible/collections \
-    --requirements-file "/build/bootstrap-docker:bullseye/requirements.yml"
+    --requirements-file "/build/bootstrap-docker:bookworm/requirements.yml"
 
 VOLUME ["/cache"]
 

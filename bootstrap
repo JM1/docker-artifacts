@@ -93,7 +93,7 @@ docker() {
 
     local _namespace=jm1337
     local _repository=bootstrap-docker
-    local _tag=bullseye
+    local _tag=bookworm
 
     # build container image if it does not exist
     if [ -z "$(command docker image ls -q "$_namespace/$_repository:$_tag")" ]; then
