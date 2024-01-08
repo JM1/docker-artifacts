@@ -35,7 +35,7 @@ RUN dnf -y check-update && \
     rust cargo rust-analyzer clippy \
     gcc gdb clang cmake gcc-g++ \
     python3 python3-pip python3-virtualenv \
-    golang golang-x-tools-gopls \
+    delve golang golang-honnef-tools golang-x-tools-gopls \
     nodejs nodejs-bash-language-server \
     binwalk rst2pdf \
     && \
