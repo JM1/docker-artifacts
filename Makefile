@@ -18,7 +18,7 @@ SUBDIRS := ansible\:bookworm \
 	debian-systemd\:bullseye \
 	devbox\:rawhide \
 	dhcpd\:rawhide \
-	embedded\:bullseye \
+	embedded\:bookworm \
 	httpd\:rawhide \
 	python\:rawhide \
 	tex\:bullseye \

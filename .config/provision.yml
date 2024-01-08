@@ -87,16 +87,6 @@
     tags: ["debian"]
     when: inventory_hostname in groups.pkg_debian
 
-  - name: Setup a embedded development environment
-    role: embedded
-    tags: ["embedded"]
-    when: inventory_hostname in groups.pkg_embedded
-
-  - name: Setup a development environment for FREETZ
-    role: freetz
-    tags: ["freetz"]
-    when: inventory_hostname in groups.pkg_freetz
-
   - name: Setup a HPC development environment
     role: hpc
     tags: ["hpc"]
@@ -106,11 +96,6 @@
     role: java
     tags: ["java"]
     when: inventory_hostname in groups.pkg_java
-
-  - name: Setup a development environment for OpenWRT
-    role: openwrt
-    tags: ["openwrt"]
-    when: inventory_hostname in groups.pkg_openwrt
 
   - name: Setup a Python development environment
     role: python
