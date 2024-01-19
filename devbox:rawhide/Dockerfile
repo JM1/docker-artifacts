@@ -27,7 +27,7 @@ FROM registry.fedoraproject.org/fedora:rawhide
 RUN dnf -y check-update && \
   dnf -y upgrade && \
   dnf -y install \
-    bind-utils iproute iputils tcpdump traceroute \
+    bind-utils iproute iputils tcpdump traceroute socat \
     bash-completion fzf htop less man-db patch procps psmisc screen tmux xz vim hostname \
     glibc-langpack-en \
     git git-lfs mercurial myrepos subversion \
