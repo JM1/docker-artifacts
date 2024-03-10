@@ -38,5 +38,6 @@ RUN dnf -y check-update && \
     delve golang golang-honnef-tools golang-x-tools-gopls \
     nodejs nodejs-bash-language-server \
     binwalk rst2pdf \
+    mkosi \
     && \
   dnf clean all
