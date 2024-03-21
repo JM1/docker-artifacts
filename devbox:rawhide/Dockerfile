@@ -32,7 +32,7 @@ RUN dnf -y check-update && \
     glibc-langpack-en \
     git git-lfs mercurial myrepos subversion \
     openssh-clients \
-    rust cargo rust-analyzer clippy \
+    rust cargo rust-analyzer clippy rustfmt \
     gcc gdb clang cmake gcc-g++ \
     python3 python3-pip python3-virtualenv \
     delve golang golang-honnef-tools golang-x-tools-gopls \
