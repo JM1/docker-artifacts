@@ -30,6 +30,7 @@ RUN apt-get update && \
     build-essential \
     libncurses-dev \
     zlib1g-dev \
+    file \
     gawk \
     git \
     gettext \
@@ -39,6 +40,7 @@ RUN apt-get update && \
     wget \
     unzip \
     python3 \
+    python3-distutils \
     && \
   apt-get purge -y *-doc && \
   rm -rf /var/lib/apt/lists/*
