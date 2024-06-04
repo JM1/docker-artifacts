@@ -22,7 +22,7 @@ SUBDIRS := ansible\:bookworm \
 	embedded\:bookworm \
 	httpd\:rawhide \
 	python\:rawhide \
-	tex\:bullseye \
+	tex\:bookworm \
 	tftpd\:rawhide
 
 $(TOPTARGETS):

@@ -3,7 +3,7 @@
 
 DOCKER_PULL = true
 DOCKER_REPOSITORY = jm1337/tex
-DOCKER_TAG = bullseye
+DOCKER_TAG = bookworm
 
 include ../.config/docker.mk
 
