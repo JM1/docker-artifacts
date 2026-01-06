@@ -41,6 +41,7 @@ RUN apt-get update && \
     unzip \
     python3 \
     python3-distutils \
+    zstd \
     && \
   apt-get purge -y *-doc && \
   rm -rf /var/lib/apt/lists/*
