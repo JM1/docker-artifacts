@@ -117,14 +117,6 @@
   - name: Purge apt cache to reduce image size
     # Ref.: https://docs.docker.com/develop/develop-images/dockerfile_best-practices/
     shell: rm -rf /var/lib/apt/lists/*
-    args:
-      # Silence warning "Consider using the file module with state=absent rather
-      # than running rm. If you need to use command because file is insufficient
-      # you can add warn=False to this command task or set command_warnings=False
-      # in ansible.cfg to get rid of this message." because Ansible's file module
-      # does not feature a state=empty yet.
-      # Ref.: https://github.com/ansible/ansible/issues/18910
-      warn: false
     when: inventory_hostname in groups.debian
 
   - name: Purge KDE build files to reduce image size,
