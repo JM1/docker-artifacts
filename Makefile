@@ -10,6 +10,7 @@ SUBDIRS := ansible\:bookworm \
 	debian\:bullseye \
 	debian-builder\:bookworm \
 	debian-builder\:bullseye \
+	debian-builder\:trixie \
 	debian-dev-hpc\:bullseye \
 	debian-dev-hbrs\:bullseye \
 	debian-dev-java\:bullseye \
